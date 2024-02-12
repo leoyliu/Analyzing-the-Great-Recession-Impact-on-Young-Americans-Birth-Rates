@@ -1,0 +1,133 @@
+---
+title: "Echoes of Economic Downturn: Investigating the Persistent Impact of the Great Recession on Birth Rates Among Young Americans"
+author: 
+  - Yuanyi (Leo) Liu
+  - Emma Teng
+thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-the-Great-Recession-s-Impact-on-Young-Americans-Birth-Rates/tree/main. A replication of various aspects in this paper are available at: https://doi.org/10.48152/ssrp-srs6-t802"
+date: today
+date-format: long
+abstract: "In our study, we delve into the trend of declining US birth rates among young individuals, particularly in light of the Great Recession's aftermath. By examining similar demographic and cohort factors as Kearney et al. (2022), we extend the investigation to include the potential influences of the feminist movement and advancements in technology and media. Our findings align with Kearney et al., reinforcing the notion of changing priorities among younger generations. This replication highlights the complex interplay of societal shifts and economic conditions on fertility decisions, offering a nuanced understanding of contemporary demographic trends."
+format: pdf
+toc: true
+number-sections: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+# install.packages("knitr")
+# install.packages("opendatatoronto")
+# install.packages("tidyverse")
+# install.packages("here")
+# install.packages("tidyr")
+# install.packages("dplyr")
+# install.packages("kableExtra")
+
+# library(knitr)
+# library(opendatatoronto)
+# library(tidyverse)
+# library(here)
+# library(tidyr)
+# library(dplyr)
+# library(kableExtra)
+# library(janitor)
+```
+
+
+# Introduction {#sec-intro}
+
+The paper is structured to facilitate a comprehensive understanding of the study and its implications. Following @sec-intro, @sec-data presents the data, detailing the data sources, analytical techniques, and the rationale behind the chosen methods. @sec-result discusses the results, elaborating on the observed trends and patterns in crime data. @sec-discussion provides an in-depth discussion of these findings, exploring potential factors influencing these trends, drawing connections to broader urban issues, and providing suggestions for future research in this area.
+
+\newpage
+
+# Data {#sec-data}
+
+This section aims to offer an insightful understanding of the dataset utilized in our analysis, focusing on its content, origin, and the methods applied for data manipulation and visualization.
+
+## Source
+
+Although alternative datasets were considered, this specific dataset was selected for its detailed year-wise breakdown and the diversity of crime types it encompasses. Other datasets either lacked the temporal detail or the variety of crime categories present in our chosen dataset.
+
+## Methodology
+The data was processed and cleaned using R[@citeR], a powerful statistical programming language. For key operations, please refer to the [@sec-appendix]. 
+
+## Variables
+To better understand the data, the summary_table dataset was developed to offer a more structured and aggregated view of the crime data. By transforming and summarizing the data into a format that displays crime types against years, this dataset simplifies the task of identifying and analyzing trends over time. The dataset includes various crime categories, such as assault, theft, and other types, with each variable representing the annual count of reported cases for each crime type. This longitudinal data provides a detailed view of the crime trends in Toronto over a decade. 
+```{r}
+
+```
+
+
+We proceeded to organize the dataset into two categories: 'Violent' crimes, which included offenses such as 'Assault' and 'Homicide', and 'Non-Violent' crimes, encompassing acts like 'Theft'. It is particularly valuable for understanding the overall landscape of crime in Toronto, focusing on the comparison between violent and non-violent incidents.
+```{r}
+
+```
+ 
+## Measurements
+
+
+\newpage
+
+# Results {#sec-result}
+In this section, we delve into the core findings of our study, shedding light on the intricate patterns and trends of crime in Toronto from 2014 to 2023. Our analysis dissects both violent and non-violent crime statistics, revealing insightful correlations and variations over the decade.
+```{r fig.width=10, fig.height=5.5}
+
+```
+
+
+```{r}
+
+```
+\newpage
+
+The red line represents violent crimes, and the blue line represents non-violent crimes. The plot shows distinct trends for both categories over the specified time frame.
+
+* **Violent Crimes (Red Line):** There has been an overall increasing trend in the number of violent crime cases over the years. There are some fluctuations, with a noticeable dip occurring in one of the years, but the general direction is upwards, especially towards the end of the period, indicating a rise in violent crimes or an increase in reporting.
+
+* **Non-Violent Crimes (Blue Line):** The trend in non-violent crime cases shows some variability but does not have as clear an increasing pattern as violent crimes. There are years where the rate has increased or decreased, but the last year shows a notable increase, suggesting a possible upward trend at the end of the period.
+
+Overall, the graph indicates that while both violent and non-violent crimes have seen rises and falls, the increase in violent crimes towards the later years is more pronounced. This could reflect changes in societal conditions, law enforcement practices, or reporting mechanisms.
+
+\newpage
+
+# Discussion {#sec-discussion}
+
+The analysis of Toronto's crime trends from 2014 to 2023 reveals a complex and evolving landscape of public safety. The pronounced increase in assault cases in recent years is alarming, suggesting that the city may be facing emerging challenges in maintaining public order. This rise in violent crime needs a closer investigation of possible causative factors, such as the effects of increased urbanization, economic disparity, and shifts in population density.
+
+## Variation in Crime Trends {#sec-first-point}
+
+Simultaneously, the decline in theft-related crimes offers a more hopeful narrative. This trend may reflect the successful implementation of preventative measures by law enforcement agencies, such as community policing efforts and the integration of advanced surveillance technology. The use of crime prevention techniques, potentially aided by increased public awareness and education, appears to be bearing fruit.
+
+The contrast between the trajectories of violent and non-violent crime rates underscores the need for a differentiated approach to policy-making and law enforcement. While we appreciate our gains in decreasing property crimes, the data motivates us to pursue more effective interventions for preventing and reacting to violent crimes. This might include extending social services, improving community engagement, and investing in data-driven police strategies.
+
+## Weaknesses and Next Steps
+
+While the visualization provides a high-level overview of crime trends in Toronto, it's essential to conduct a more detailed analysis to understand the underlying causes of these trends. This includes examining subcategories of crimes, focusing on specific geographic areas within the city, and considering other relevant data sources.
+
+Furthermore, this study emphasises the need for ongoing monitoring and analysis of crime data to comprehend the ever-changing dynamics of urban crime. In light of these findings, future studies should focus on understanding the influence of specific policies and social changes on crime rates. Only by doing such a comprehensive analysis can we hope to develop strategies that will ensure the safety and well-being of all Toronto residents.
+
+\newpage
+
+# References
+
+::: {#refs}
+:::
+
+{{< pagebreak >}}
+
+# Appendix {#sec-appendix}
+## Data Manipulation and Cleaning
+* **Data Cleaning:** The initial phase of cleaning the Toronto crime rates dataset involved importing the raw data using the `read_csv` function from the `readr`[@citereadr] package. Following the import, the dataset was streamlined using the `select` function from `dplyr`[@citedplyr], a tidyverse[@citetidyverse] package, to remove irrelevant columns such as `X_id`, `HOOD_ID`, `POPULATION_2023`, and `geometry`. This step was crucial to focus the analysis on relevant variables. Additionally, the `na.omit` function was employed to discard any rows with missing values (NA), ensuring the dataset's completeness and reliability. The final step in the cleaning process was the exportation of the cleaned data into a new CSV file using the `write_csv `function from `readr`[@citereadr], thereby preserving the cleaned and refined dataset for subsequent analysis.
+
+* **Data Transformation:** The dataset was transformed from a wide format to a long format using the `gather` function from the `tidyr`[@citetidyr] package. This transformation is crucial for simplifying the data structure and making it more amenable to analysis. Also, the separate function, again from `tidyr`[@citetidyr], was instrumental in dividing the 'Crime_Year' column into two distinct parts: 'Crime_Type' and 'Year'. This enhances the granularity of the dataset, allowing for more detailed analysis.
+
+* **Aggregation:** The `group_by` and `summarise` functions from `dplyr`[@citedplyr] were employed to aggregate the data by year and crime type.
+
+* **Data Visualization:** For visual representation, `ggplot2`[@citeggplot], a versatile package in R for data visualization, was employed. It was used to create comprehensive line plots depicting the trends of various crime categories over the years.
+
+* **Paper Generation:** The packages `knitr`[@citeknitr] is used in generating R Markdown reports.
+
+
