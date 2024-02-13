@@ -88,6 +88,20 @@ This table presents the birth rates for various age groups and racial categories
 
 
 // Visualization of the data for intuition
+
+
+## Measurements
+
+// TODO: Add a summary table to show measurements
+
+
+\newpage
+
+# Results {#sec-result}
+
+@sec-result presents the core findings from our comprehensive analysis of US birth rates, specifically focusing on the changes observed over time, across different age groups of young women, and by state.
+
+## Overall Trend in US Birth Rates
 ```{r}
 #| label: fig-trends-in-birth-rate
 #| fig-cap: Trends in Birth Rate in US
@@ -109,18 +123,9 @@ ggplot(figure1,
               plot.title = element_text(color = "black", size = 14, face = "bold"),
               axis.title = element_text(color = "black"))
 ```
-@fig-trends-in-birth-rate, reflecting the trend in birth rates in America over time, captures a significant decline in birth rates commencing around the onset of the Great Recession in 2007-2008. According to Kearney et al. (2022), the economic stress associated with the Great Recession contributed to a marked downturn in birth rates, with a 7.2 percent drop from 68.1 to 63.2 births per 1,000 women observed between 2008 and 2011. This visual representation is particularly striking as it indicates a sharp and sustained decrease in birth rates coinciding with and following the Great Recession, without a subsequent recovery to pre-recession levels.
+First, we examine the overall trend, showcasing a substantial decline following the Great Recession. @fig-trends-in-birth-rate, reflecting the trend in birth rates in America over time, captures a significant decline in birth rates commencing around the onset of the Great Recession in 2007-2008. According to Kearney et al. (2022), the economic stress associated with the Great Recession contributed to a marked downturn in birth rates, with a 7.2 percent drop from 68.1 to 63.2 births per 1,000 women observed between 2008 and 2011. This visual representation is particularly striking as it indicates a sharp and sustained decrease in birth rates coinciding with and following the Great Recession, without a subsequent recovery to pre-recession levels.
 
-## Measurements
-
-// TODO: Add a summary table to show measurements
-
-
-\newpage
-
-# Results {#sec-result}
-In this section, we delve into the core findings of our study, shedding light on the intricate patterns and trends of birth rate in US.
-
+## Trend in birth rate among yong women
 ```{r}
 #| label: fig-trends-in-birth-rate-in-young-people
 #| fig-cap: Trends in Birth Rate Among Young People in US
@@ -141,10 +146,9 @@ ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
         plot.title = element_text(color = "black", size = 14, face = "bold"),
         axis.title = element_text(color = "black"))
 ```
-@fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steafy slow increase.
+Transitioning to age-specific trends, we direct our attention to the young women's demographic. @fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steafy slow increase.
 
-
-// TODO: Transit to following figure
+## Change in Birth Rates by State
 ```{r}
 #| label: fig-demograph
 #| fig-cap: Demograph
@@ -159,7 +163,9 @@ ggplot(figure3a, aes(x = long, y = lat, group=group)) +
        fill = 'Change in Birth Rate') +
   theme_void()
 ```
-@fig-demograph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
+We then shift our focus to geographical variations in birth rates across states, presented in @fig-demograph. The graph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
+
+In summary, our results encapsulate a comprehensive view of the declining birth rates in the U.S., revealing both temporal and demographic patterns. The forthcoming @sec-discussion will delve into the potential influences and biases that may underlie these trends.
 
 \newpage
 
