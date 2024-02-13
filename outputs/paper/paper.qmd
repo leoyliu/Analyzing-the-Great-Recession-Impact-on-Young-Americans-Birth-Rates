@@ -18,6 +18,8 @@ bibliography: references.bib
 #| warning: false
 #| message: false
 
+# install.packages("mapdata")
+
 library(tidyverse)
 library(dplyr)
 library(here)
@@ -44,15 +46,16 @@ The paper is structured to facilitate a comprehensive understanding of the study
 This section aims to offer an insightful understanding of the dataset utilized in our analysis, focusing on its content, origin, and the methods applied for data manipulation and visualization.
 
 ## Source
+// TODO: Add explanation for source
 
-
-Although alternative datasets were considered, this specific dataset was selected for its detailed year-wise breakdown and the diversity of crime types it encompasses. Other datasets either lacked the temporal detail or the variety of crime categories present in our chosen dataset.
+Although alternative datasets were considered, this specific dataset was selected for its detailed year-wise breakdown and diversity. Other datasets either lacked the temporal detail or variety present in our chosen dataset.
 
 ## Methodology
-The data was processed and cleaned using R[@citeR], a powerful statistical programming language. For key operations, please refer to the [@sec-appendix]. 
+// TODO: Add methodology for cleaning data
+The data was processed and cleaned using R[@citeR], a powerful statistical programming language. 
 
 ## Variables
-To better understand the data, the summary_table dataset was developed to offer a more structured and aggregated view of the crime data. By transforming and summarizing the data into a format that displays crime types against years, this dataset simplifies the task of identifying and analyzing trends over time. The dataset includes various crime categories, such as assault, theft, and other types, with each variable representing the annual count of reported cases for each crime type. This longitudinal data provides a detailed view of the crime trends in Toronto over a decade.
+To better understand the data, the summary_table dataset was developed to offer a more structured and aggregated view of the birth rate data. By transforming and summarizing the data into a format that displays birth rate against years, this dataset simplifies the task of identifying and analyzing trends over time.
 
 TODO: Add a table here to better understand the data.
 ```{r}
@@ -62,6 +65,9 @@ TODO: Add a table here to better understand the data.
 
 // Visualization of the data for intuition
 ```{r}
+#| label: fig-trends-in-birth-rate
+#| fig-cap: Trends in Birth Rate in US
+#| echo: false
 
 figure1 <- read.csv(here::here("outputs/data/figure_1.csv"))
 
@@ -79,7 +85,8 @@ ggplot(figure1,
               plot.title = element_text(color = "black", size = 14, face = "bold"),
               axis.title = element_text(color = "black"))
 ```
- 
+@fig-trends-in-birth-rate, reflecting the trend in birth rates in America over time, captures a significant decline in birth rates commencing around the onset of the Great Recession in 2007-2008. According to Kearney et al. (2022), the economic stress associated with the Great Recession contributed to a marked downturn in birth rates, with a 7.2 percent drop from 68.1 to 63.2 births per 1,000 women observed between 2008 and 2011. This visual representation is particularly striking as it indicates a sharp and sustained decrease in birth rates coinciding with and following the Great Recession, without a subsequent recovery to pre-recession levels.
+
 ## Measurements
 
 // TODO: Add a summary table to show measurements
@@ -88,15 +95,17 @@ ggplot(figure1,
 \newpage
 
 # Results {#sec-result}
-In this section, we delve into the core findings of our study, shedding light on the intricate patterns and trends of crime in Toronto from 2014 to 2023. Our analysis dissects both violent and non-violent crime statistics, revealing insightful correlations and variations over the decade.
-
-
+In this section, we delve into the core findings of our study, shedding light on the intricate patterns and trends of birth rate in US.
 
 ```{r}
+#| label: fig-trends-in-birth-rate-in-young-people
+#| fig-cap: Trends in Birth Rate Among Young People in US
+#| echo: false
+
 figure2 <- read.csv(here::here("outputs/data/figure_2.csv"))
 
 ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
-  geom_line(size=1) +
+  geom_line(linewidth=1) +
   geom_vline(xintercept = 2007, color = "black", linetype = "dashed") + 
   annotate("text", x = 2007, y = 60, label = "2007", 
            color = "black", angle = 90, vjust = -0.5) +
@@ -108,11 +117,15 @@ ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
         plot.title = element_text(color = "black", size = 14, face = "bold"),
         axis.title = element_text(color = "black"))
 ```
-// TODO: Explain the figure
+@fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steafy slow increase.
 
 
 // TODO: Transit to following figure
 ```{r}
+#| label: fig-demograph
+#| fig-cap: Demograph
+#| echo: false
+
 figure3a <- read.csv(here::here("outputs/data/figure_3a.csv"))
 
 ggplot(figure3a, aes(x = long, y = lat, group=group)) +
@@ -122,35 +135,33 @@ ggplot(figure3a, aes(x = long, y = lat, group=group)) +
        fill = 'Change in Birth Rate') +
   theme_void()
 ```
-// TODO: Explain the figure
-
+@fig-demograph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
 
 \newpage
 
 # Discussion {#sec-discussion}
 
-The analysis of Toronto's crime trends from 2014 to 2023 reveals a complex and evolving landscape of public safety. The pronounced increase in assault cases in recent years is alarming, suggesting that the city may be facing emerging challenges in maintaining public order. This rise in violent crime needs a closer investigation of possible causative factors, such as the effects of increased urbanization, economic disparity, and shifts in population density.
+// TODO
 
 ## Findings
 
-Simultaneously, the decline in theft-related crimes offers a more hopeful narrative. This trend may reflect the successful implementation of preventative measures by law enforcement agencies, such as community policing efforts and the integration of advanced surveillance technology. The use of crime prevention techniques, potentially aided by increased public awareness and education, appears to be bearing fruit.
+// TODO
 
 ## Economic Impact Insights
 
-The contrast between the trajectories of violent and non-violent crime rates underscores the need for a differentiated approach to policy-making and law enforcement. While we appreciate our gains in decreasing property crimes, the data motivates us to pursue more effective interventions for preventing and reacting to violent crimes. This might include extending social services, improving community engagement, and investing in data-driven police strategies.
+// TODO
 
 ## Societal and Technological Influences
 
 // TODO
 
-
 ## Weaknesses
 
-While the visualization provides a high-level overview of crime trends in Toronto, it's essential to conduct a more detailed analysis to understand the underlying causes of these trends. This includes examining subcategories of crimes, focusing on specific geographic areas within the city, and considering other relevant data sources.
+// TODO
 
 ## Future Research Directions
 
-Furthermore, this study emphasises the need for ongoing monitoring and analysis of crime data to comprehend the ever-changing dynamics of urban crime. In light of these findings, future studies should focus on understanding the influence of specific policies and social changes on crime rates. Only by doing such a comprehensive analysis can we hope to develop strategies that will ensure the safety and well-being of all Toronto residents.
+// TODO
 
 \newpage
 
@@ -160,17 +171,3 @@ Furthermore, this study emphasises the need for ongoing monitoring and analysis 
 :::
 
 {{< pagebreak >}}
-
-# Appendix {#sec-appendix}
-## Data Manipulation and Cleaning
-* **Data Cleaning:** The initial phase of cleaning the Toronto crime rates dataset involved importing the raw data using the `read_csv` function from the `readr`[@citereadr] package. Following the import, the dataset was streamlined using the `select` function from `dplyr`[@citedplyr], a tidyverse[@citetidyverse] package, to remove irrelevant columns such as `X_id`, `HOOD_ID`, `POPULATION_2023`, and `geometry`. This step was crucial to focus the analysis on relevant variables. Additionally, the `na.omit` function was employed to discard any rows with missing values (NA), ensuring the dataset's completeness and reliability. The final step in the cleaning process was the exportation of the cleaned data into a new CSV file using the `write_csv `function from `readr`[@citereadr], thereby preserving the cleaned and refined dataset for subsequent analysis.
-
-* **Data Transformation:** The dataset was transformed from a wide format to a long format using the `gather` function from the `tidyr`[@citetidyr] package. This transformation is crucial for simplifying the data structure and making it more amenable to analysis. Also, the separate function, again from `tidyr`[@citetidyr], was instrumental in dividing the 'Crime_Year' column into two distinct parts: 'Crime_Type' and 'Year'. This enhances the granularity of the dataset, allowing for more detailed analysis.
-
-* **Aggregation:** The `group_by` and `summarise` functions from `dplyr`[@citedplyr] were employed to aggregate the data by year and crime type.
-
-* **Data Visualization:** For visual representation, `ggplot2`[@citeggplot], a versatile package in R for data visualization, was employed. It was used to create comprehensive line plots depicting the trends of various crime categories over the years.
-
-* **Paper Generation:** The packages `knitr`[@citeknitr] is used in generating R Markdown reports.
-
-
