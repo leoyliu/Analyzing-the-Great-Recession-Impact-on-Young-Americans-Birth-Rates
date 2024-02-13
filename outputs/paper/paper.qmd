@@ -45,27 +45,29 @@ The paper is structured to facilitate a comprehensive understanding of the study
 
 # Data {#sec-data}
 
-This section aims to offer an insightful understanding of the dataset utilized in our analysis, focusing on its content, origin, and the methods applied for data manipulation and visualization.
+This section aims to offer an insightful understanding of the dataset utilized in our analysis. The dataset captures the birth rates across various demographics in the United States from 1980 to 2020. The data provide a broader context, allowing an analysis of trends over time and across different economic cycles, including the period of the Great Recession.
 
 ## Source
 // TODO: Add explanation for source
 
-Although alternative datasets were considered, this specific dataset was selected for its detailed year-wise breakdown and diversity. Other datasets either lacked the temporal detail or variety present in our chosen dataset.
+While there were alternative datasets available from other public and private sources, this dataset was chosen due to its comprehensive coverage, reliability, and the level of detail it offers. It includes data from the National Center for Health Statistics (NCHS) and the U.S. Census Bureau, which are both reputable sources of demographic data.
 
 ## Methodology
 The data was processed and cleaned using R[@citeR], a powerful statistical programming language. Moreover, most of the data in our dataset are previously cleaned in the project we are replicating. Thus, figure 1 directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
 
-In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@dpylr] to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@tidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@tidyverse] in order to be graphed properly using `ggplot2`[@ggplot2].
+In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@citedplyr] to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@citetidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@citetidyverse] in order to be graphed properly using `ggplot2`[@citeggplot].
 
-In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from `mapdata`[@mapdata]. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from `mapdata`[@mapdata]. Then, a temporary data frame is created with tibble from `tidyverse`[@tidyverse] with the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from `dpylr`[@dpylr], which is then selected and renamed using `tidyverse`[@tidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `heaven`[@heaven].
+In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from `mapdata`. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from `mapdata`. Then, a temporary data frame is created with tibble from `tidyverse`[@citetidyverse] with the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from `dpylr`[@citedplyr], which is then selected and renamed using `tidyverse`[@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven`[@citehaven].
 
-In all three figures, the library `here`[@here] were used to ensure file path is accessible in all directories.
+// TODO: kable
+
+In all three figures, the library `here` were used to ensure file path is accessible in all directories.
 
 ## Variables
 To better understand the data, the summary_table dataset was developed to offer a more structured and aggregated view of the birth rate data. By transforming and summarizing the data into a format that displays birth rate against years, this dataset simplifies the task of identifying and analyzing trends over time.
 
 ```{r}
-#| label: tab-display-raw-data
+#| label: tbl-display-raw-data
 #| tbl-cap: Birth rate of all groups from 1980 to 1989
 #| echo: false
 
