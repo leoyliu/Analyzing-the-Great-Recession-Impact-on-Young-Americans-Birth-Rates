@@ -19,6 +19,7 @@ bibliography: references.bib
 #| message: false
 
 # install.packages("mapdata")
+# install.packages("kableExtra")
 
 library(tidyverse)
 library(dplyr)
@@ -26,6 +27,7 @@ library(here)
 library(mapdata)
 library(ggplot2)
 library(haven)
+library(kableExtra)
 ```
 
 
@@ -51,23 +53,40 @@ This section aims to offer an insightful understanding of the dataset utilized i
 Although alternative datasets were considered, this specific dataset was selected for its detailed year-wise breakdown and diversity. Other datasets either lacked the temporal detail or variety present in our chosen dataset.
 
 ## Methodology
-// TODO: Add methodology for cleaning data
-
 The data was processed and cleaned using R[@citeR], a powerful statistical programming language. Moreover, most of the data in our dataset are previously cleaned in the project we are replicating. Thus, figure 1 directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
 
 In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@dpylr] to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@tidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@tidyverse] in order to be graphed properly using `ggplot2`[@ggplot2].
 
+<<<<<<< HEAD
 In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from `mapdata`[@mapdata]. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from `mapdata`[@mapdata]. Then, a temporary data frame is created with tibble from `tidyverse`[@tidyverse] with the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from `dpylr`[@dpylr], which is then selected and renamed using `tidyverse`[@tidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing.
+=======
+In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from R[@mapdata]. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from R[@mapdata]. Then, a temporary data frame is created with tibble from R[@tidyverse] witht the the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from R[@dpylr], which is then selected and renamed using R[@tidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with R[@heaven].
+>>>>>>> dee1183cbff20d6580b8af770f6a8db3c10a796e
 
 In all three figures, the library `here`[@here] were used to ensure file path is accessible in all directories.
 
 ## Variables
 To better understand the data, the summary_table dataset was developed to offer a more structured and aggregated view of the birth rate data. By transforming and summarizing the data into a format that displays birth rate against years, this dataset simplifies the task of identifying and analyzing trends over time.
 
-TODO: Add a table here to better understand the data.
 ```{r}
+#| label: tab-display-raw-data
+#| tbl-cap: Birth rate of all groups from 1980 to 1989
+#| echo: false
+
+rawdata <- read.csv(here::here("inputs/data/figs_2a_2b.csv"))
+
+rawdata |>
+  select(year,brate_1519,brate_2024,brate_2529,brate_3034,brate_3539,brate_4044,brate_whitenh,brate_blacknh,brate_hisp) |>
+  slice(1:10) |>
+  kable(
+    caption = "Birth rate of all groups from 1980 to 1989",
+    col.names = c("Year", "15 to 19", "20 to 24","25 to 29", "30 to 34", "35 to 39", "40 to 44", "white", "black", "hispanic"),
+    digits = 1,
+    booktabs = TRUE
+  )
 ```
 
+This table presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.
 
 
 // Visualization of the data for intuition
