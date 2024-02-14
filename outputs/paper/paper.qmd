@@ -39,9 +39,9 @@ Utilizing a blend of quantitative data analysis and demographic research, we inv
 
 Our findings reveal a significant decline in birth rates among young Americans during the recession, with lingering effects in the subsequent years. This trend suggests that economic instability has a profound impact on personal life choices, including the decision to have children. The implications of these findings are far-reaching, affecting not only demographic forecasting but also social policy and economic recovery strategies.
 
-The paper is structured to facilitate a comprehensive understanding of the study and its implications. Following @sec-intro, @sec-data presents the data, detailing the data sources, analytical techniques, and the rationale behind the chosen methods. @sec-result discusses the results, elaborating on the observed trends and patterns in brth rate data. @sec-discussion provides an in-depth discussion of these findings, exploring potential factors influencing these trends, drawing connections to broader socio-economic issues, and providing suggestions for future research in this area.
+In this study, our primary estimand is the causal effect of the Great Recession on the birth rates among young people in the United States. Specifically, we aim to estimate the magnitude of change in birth rates attributable to the economic downturn, distinguishing this effect from other contemporaneous social and economic factors. This involves analyzing the differential impact of the recession on various age groups and across states, providing a nuanced understanding of how macroeconomic shocks can influence demographic trends.
 
-\newpage
+The paper is structured to facilitate a comprehensive understanding of the study and its implications. Following @sec-intro, @sec-data presents the data, detailing the data sources, analytical techniques, and the rationale behind the chosen methods. @sec-result discusses the results, elaborating on the observed trends and patterns in brth rate data. @sec-discussion provides an in-depth discussion of these findings, exploring potential factors influencing these trends, drawing connections to broader socio-economic issues, and providing suggestions for future research in this area.
 
 # Data {#sec-data}
 
@@ -59,10 +59,10 @@ In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpy
 
 In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from `mapdata`. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from `mapdata`. Then, a temporary data frame is created with tibble from `tidyverse`[@citetidyverse] with the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from `dpylr`[@citedplyr], which is then selected and renamed using `tidyverse`[@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven`[@citehaven].
 
-
 In all three figures, the library `here` were used to ensure file path is accessible in all directories.
 
 ## Variables
+
 To better understand the data, the summary_table dataset was developed to offer a more structured and aggregated view of the birth rate data. By transforming and summarizing the data into a format that displays birth rate against years, this dataset simplifies the task of identifying and analyzing trends over time.
 
 ```{r}
@@ -85,14 +85,13 @@ rawdata |>
 
 @tbl-display-raw-data uses R[@kable] presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.
 
-
-// Visualization of the data for intuition
-
-
 ## Measurements
 
-// TODO: Add a summary table to show measurements
+The measurement of birth rates in our study involves a detailed analysis of the annual number of live births per 1,000 women in various age groups, ranging from 15 to 44 years. These rates were extracted from comprehensive datasets provided by the National Center for Health Statistics (NCHS) and the U.S. Census Bureau, ensuring accuracy and reliability in capturing demographic trends across the United States from 1980 to 2020.
 
+For each age group, birth rates were calculated by dividing the total number of live births by the population of women in that age range, then multiplying by 1,000 to standardize the measure. This approach allows for comparison across different demographics and time periods, providing a clear picture of how birth rates have shifted, particularly in response to economic conditions such as the Great Recession.
+
+In addition to age-specific birth rates, state-level data were also analyzed to identify geographic variations in birth rate trends. This involved mapping birth rates against state populations, taking into consideration the exclusion of data from states like Alaska and Hawaii where mapping constraints exist.
 
 \newpage
 
@@ -179,11 +178,18 @@ In our replication of Kearney et al. (2022), we reaffirmed the central finding t
 
 ## Economic Impact Insights
 
-The data presented in our study underscores the profound influence of economic factors on birth rates among young Americans, particularly in the wake of the Great Recession. The decline in birth rates aligns temporally with the economic downturn, suggesting a direct correlation between financial uncertainty and decisions regarding family planning. This is consistent with Kearney et al. (2022), who also observed a notable decrease in birth rates post-2007. Our findings further delve into the nuances of this relationship, illustrating how economic stressors extend beyond immediate financial strain to influence long-term life choices. The persistence of this trend, despite economic recovery, indicates a lasting impact on the psyche of young individuals, potentially altering their perception of financial stability and its importance in family planning. This insight points to the need for economic policies that provide not only immediate relief but also long-term security to mitigate such profound impacts on demographic trends.
+The significant decline in birth rates among young Americans during and after the Great Recession underscores the profound influence of economic stress on reproductive decisions. This downturn in birth rates is not merely coincidental with the timing of the recession but suggests a deeper, more systemic impact of economic instability on personal life choices, particularly the decision to start or expand a family. The persistence of this trend, even in the years following economic recovery, indicates that the repercussions of the recession extended beyond immediate financial hardship, affecting long-term perceptions of financial security and stability. This is further evidenced by the lack of rebound in birth rates post-recession, which might have been anticipated if the decline were solely due to immediate economic pressures.
+
+The economic model of fertility, which considers the cost of childbearing and rearing alongside the opportunity costs associated with parental time and resources, provides a framework to understand these trends. The recession likely heightened these costs and opportunity costs, making the decision to have children more daunting. Factors such as unemployment, underemployment, and job insecurity could have led to a reevaluation of the feasibility of affording children, contributing to the postponement or forego of childbirth. Additionally, the economic downturn might have altered young adults' expectations and aspirations regarding financial stability, further influencing their family planning decisions.
+
 
 ## Societal and Technological Influences
 
-Our analysis also highlights the role of societal and technological changes in shaping birth rate trends among young people. The significant decline in birth rates within the 15-29 age group, as detailed in our findings, suggests a shift in life priorities that may be influenced by broader societal changes. These include increased access to higher education, career opportunities, and advancements in reproductive technology, which have provided young people with more choices and greater control over their reproductive decisions. This is in line with the observations made by Kearney et al. (2022), who speculated on the influence of shifting priorities and the second demographic transition. Our study expands on this by suggesting that the integration of technology and societal evolution has created a new landscape for family planning, where traditional timelines and expectations may no longer hold the same weight. This evolution points to the necessity of incorporating societal and technological considerations into policy-making to address the changing dynamics of family planning in the modern era.
+Apart from economic factors, the decline in birth rates among young people also reflects broader societal and technological shifts. The period following the Great Recession coincided with significant changes in social norms, increased educational and career opportunities for women, and advancements in reproductive technology. These factors collectively have empowered individuals, especially women, to make more autonomous decisions regarding their reproductive health and family planning.
+
+The rise in educational attainment and labor force participation among women has been accompanied by a corresponding increase in the opportunity cost of childbearing, potentially contributing to the decline in birth rates. Technological advancements, particularly in contraception, have provided women with greater control over their fertility, enabling more deliberate planning around childbirth. Social shifts, such as delayed marriage and the increasing acceptance of childlessness or smaller family sizes as viable lifestyle choices, further compound these trends.
+
+The interplay between these economic, societal, and technological factors has reshaped the landscape of family planning for young Americans. While the economic model of fertility provides a foundation for understanding these trends, the inclusion of societal and technological influences offers a more comprehensive picture of the forces at play in shaping contemporary birth rate patterns.
 
 ## Weaknesses
 
