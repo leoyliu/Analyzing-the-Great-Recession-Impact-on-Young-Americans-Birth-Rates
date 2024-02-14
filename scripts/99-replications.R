@@ -1,3 +1,10 @@
+#### Preamble ####
+# Purpose: Replicates graphs from targeted project
+# Author: Yuanyi (Leo) Liu, Qi Er (Emma) Teng
+# Date: 14 February 2024
+# Contact: leoy.liu@mail.utoronto.ca, e.teng@mail.utoronto.ca
+# License: MIT
+
 library(tidyverse)
 library(dplyr)
 library(here)

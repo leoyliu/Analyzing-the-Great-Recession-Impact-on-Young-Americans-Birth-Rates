@@ -84,3 +84,40 @@ write_csv(
   x = merged_data,
   file = "outputs/data/figure_3a.csv"
 )
+
+##Figure 4##
+rawdata <- read.csv(here::here("inputs/data/figs_2a_2b.csv"))
+
+figure4 <- rawdata |>
+  select(
+    year,brate_1519,brate_2024,brate_2529,brate_3034,brate_3539,brate_4044
+  )
+
+figure4$young <- figure4 |>
+  select(
+    brate_1519,brate_2024,brate_2529
+  ) |>
+  rowMeans()
+
+figure4$old <- figure4 |>
+  select(
+    brate_3034,brate_3539,brate_4044
+  ) |>
+  rowMeans()
+
+#Write to CSV
+write_csv(
+  x = figure4,
+  file = "outputs/data/table_2.csv"
+)
+
+figure4 <- figure4 |>
+  pivot_longer(cols = c("young", "old"),
+               names_to = "age_group",
+               values_to = "brate")
+
+#Write to CSV
+write_csv(
+  x = figure4,
+  file = "outputs/data/figure_4.csv"
+)

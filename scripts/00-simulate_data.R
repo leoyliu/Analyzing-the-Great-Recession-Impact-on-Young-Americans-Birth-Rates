@@ -1,38 +1,30 @@
 #### Preamble ####
 # Purpose: Simulates data
-# Author: Yuanyi (Leo) Liu
-# Email: leoy.liu@mail.utoronto.ca
+# Author: Yuanyi (Leo) Liu, Qi Er (Emma) Teng
+# Email: leoy.liu@mail.utoronto.ca, e.teng@mail.utoronto.ca
 # Date: 21 January 2024
 # License: MIT
 
 
 #### Workspace setup ####
-# install.packages("janitor")
 # install.packages("tidyverse")
-library(janitor)
 library(tidyverse)
-
+library(dplyr)
 
 #### Simulate ####
 
-# In this simulation, we only want the number of cases reported of each crime type from 2014 to 2023.
-# First, A tibble is created with initial Crime_Type column.
-# Second, A loop runs through each year from 2014 to 2023.
-# In each iteration of the loop, a new column is added to simulated_data for the respective year. 
-# The sample function generates random counts for the crimes for that year.
-# Third, replace = TRUE in the sample function allows for the possibility of the same number being chosen more than once.
+# In this simulation, we only want two sets of birth rate data for two different age groups, young and old.
+# The simulated data is derived from a normal distribution instead of a poisson distribution since birth rate can be more than just integers.
+# It is ensured with the abs() that old positive birth rate is recorded.
 
 set.seed(853)
 
-crime_types <- c("Assault", "Auto Theft", "Bike Theft", "Break and Enter", "Homicide", "Robbery", "Shooting Incidents", "Theft from Motor Vehicles", "Major Theft")
-
 # Initialize a tibble
-simulated_data <- tibble(Crime_Type = crime_types)
-
-# Add columns for each year from 2014 to 2023 with simulated data
-for(year in 2014:2023) {
-  simulated_data[[as.character(year)]] <- sample(500:10000, length(crime_types), replace = TRUE)
-}
+simulated_data <- tibble(
+  year = c(1980:2020),
+    old = abs(rnorm(n = 41,mean = 80.5, sd=10.5)),
+  young = abs(rnorm(n = 41,mean = 25.5, sd=5.5))
+)
 
 # View the simulated data
 print(simulated_data)

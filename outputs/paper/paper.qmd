@@ -83,7 +83,27 @@ rawdata |>
   )
 ```
 
-@tbl-display-raw-data uses R[@kable] presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, we are also concerned with the birth rate of related states in America.
+@tbl-display-raw-data uses R[@citekableExtra] presents the birth rates for various age groups in the United States from the year 1980 to 1989. Moreover, the birth rates are expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, we are also concerned with the birth rate of related states in America.
+
+```{r}
+#| label: tbl-young-old-br
+#| tbl-cap: Birth rate of young and old age group from 1980 to 1989
+#| echo: false
+
+cleaned_data <- read.csv(here::here("outputs/data/table_2.csv"))
+
+cleaned_data |>
+  select(year, young, old) |>
+  slice(1:10) |>
+  kable(
+    caption = "Birth rate of young and old age group from 1980 to 1989",
+    col.names = c("Year", "Young", "Old"),
+    digits = 1,
+    booktabs = TRUE
+  )
+```
+
+@tbl-display-raw-data uses R[@citekableExtra] presents the birth rates for the older and younger population from the year 1980 to 1989. This is a more concise table that represents the estimand we are trying to explore. Similarily to @tbl-display-raw-data, the birth rates are expressed by the mean birth rate of the selected age population. Moreover, the Year represent the years from the selected year range.
 
 ## Measurements
 
@@ -144,7 +164,33 @@ ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
               plot.title = element_text(color = "black", size = 14, face = "bold"),
               axis.title = element_text(color = "black"))
 ```
-Transitioning to age-specific trends, we direct our attention to the young women's demographic. @fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steafy slow increase.
+Transitioning to age-specific trends, we direct our attention to the young women's demographic. @fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steady slow increase.
+
+
+## Birth Rate Comparison between Young and Old Population
+```{r}
+#| label: fig-birth-rate-comparison-old-and-young
+#| fig-cap: Birth Rate Comparison between Young and Old Population
+#| echo: false
+
+figure4 <- read.csv(here::here("outputs/data/figure_4.csv"))
+
+ggplot(figure4, aes(x = year, y = brate, color = age_group)) +
+  geom_line(linewidth=1) +
+  geom_vline(xintercept = 2007, color = "black", linetype = "dashed") + 
+  annotate("text", x = 2007, y = 60, label = "2007", 
+           color = "black", angle = 90, vjust = -0.5) +
+  labs(title = "Birth Rate Comparison between Young and Old Population",
+       x = "Year",
+       y = "Birth Rate") +
+  theme(panel.background = element_rect(fill = "white"),
+        panel.grid.major = element_line(colour = "grey"),
+        plot.title = element_text(color = "black", size = 14, face = "bold"),
+        axis.title = element_text(color = "black"))
+```
+To further visualize this birth rate change between age groups, we will categorize population between age 15 to 29 as young and the population between age 30 to 44 as old. The average birth rate of each group is calculated and displayed according to the corresponding year. The younger age group is represented by blue line and the older age group is represented by red line. It is evident from the graph that the younger age group is higher than that for the old population across the entire time span. However, it is also evident that there is a significant birth rate decrease in the young population after 2007, while older population maintains a slowly increasing trend. Moreover, it can be seen that the difference in birth rate between the two age groups is slowly decreasing, and from the current trend, this change in birth rate seems to be continuously dropping.
+
+
 
 ## Change in Birth Rates by State
 ```{r}
