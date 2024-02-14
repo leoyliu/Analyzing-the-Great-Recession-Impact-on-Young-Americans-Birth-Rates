@@ -103,7 +103,7 @@ cleaned_data |>
   )
 ```
 
-@tbl-display-raw-data uses R[@citekableExtra] presents the birth rates for the older and younger population from the year 1980 to 1989. This is a more concise table that represents the estimand we are trying to explore. Similarily to @tbl-display-raw-data, the birth rates are expressed by the mean birth rate of the selected age population. Moreover, the Year represent the years from the selected year range.
+@tbl-young-old-br uses R[@citekableExtra] presents the birth rates for the older and younger population from the year 1980 to 1989. This is a more concise table that represents the estimand we are trying to explore. Similarily to @tbl-display-raw-data, the birth rates are expressed by the mean birth rate of the selected age population. Moreover, the Year represent the years from the selected year range.
 
 ## Measurements
 
