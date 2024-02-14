@@ -1,8 +1,8 @@
 #### Preamble ####
 # Purpose: Downloads, saves, and reads data from the OpenDataToronto portal
-# Author: Yuanyi (Leo) Liu
-# Date: 21 January 2024
-# Contact: leoy.liu@mail.utoronto.ca
+# Author: Yuanyi (Leo) Liu, Qi Er (Emma) Teng
+# Date: 13 February 2024
+# Contact: leoy.liu@mail.utoronto.ca, e.teng@mail.utoronto.ca
 # License: MIT
 
 
