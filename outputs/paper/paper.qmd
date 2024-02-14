@@ -59,7 +59,6 @@ In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpy
 
 In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from `mapdata`. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from `mapdata`. Then, a temporary data frame is created with tibble from `tidyverse`[@citetidyverse] with the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from `dpylr`[@citedplyr], which is then selected and renamed using `tidyverse`[@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven`[@citehaven].
 
-// TODO: kable
 
 In all three figures, the library `here` were used to ensure file path is accessible in all directories.
 
@@ -84,7 +83,7 @@ rawdata |>
   )
 ```
 
-This table presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.
+This table uses R[@kable] presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.
 
 
 // Visualization of the data for intuition
