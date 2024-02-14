@@ -7,7 +7,7 @@ thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-th
 date: today
 date-format: long
 abstract: "In this study, we explore the impact of the Great Recession on birth rates among young people in the United States, utilizing a comprehensive analysis of demographic and economic data. Our findings reveal a significant decline in birth rates within this group during and following the economic downturn, highlighting the intricate relationship between economic stability and reproductive decisions. This research contributes to our understanding of how macroeconomic factors can have profound effects on personal life choices, emphasizing the need for supportive policies targeting young individuals during economic crises."
-format: pdf
+format: html
 toc: true
 number-sections: true
 bibliography: references.bib
@@ -103,7 +103,7 @@ ggplot(figure1,
             x = "Years",
             y = "Birth rate") +
         theme(panel.background = element_rect(fill = "white"),
-              plot.background = element_rect(fill = "white", color = NA),
+              panel.grid.major = element_line(colour = "grey"),
               plot.title = element_text(color = "black", size = 14, face = "bold"),
               axis.title = element_text(color = "black"))
 ```
@@ -135,9 +135,9 @@ ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
        x = "Year",
        y = "Birth Rate") +
   theme(panel.background = element_rect(fill = "white"),
-        plot.background = element_rect(fill = "white", color = NA),
-        plot.title = element_text(color = "black", size = 14, face = "bold"),
-        axis.title = element_text(color = "black"))
+              panel.grid.major = element_line(colour = "grey"),
+              plot.title = element_text(color = "black", size = 14, face = "bold"),
+              axis.title = element_text(color = "black"))
 ```
 @fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steafy slow increase.
 
