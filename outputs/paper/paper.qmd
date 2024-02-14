@@ -7,7 +7,7 @@ thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-th
 date: today
 date-format: long
 abstract: "In this study, we explore the impact of the Great Recession on birth rates among young people in the United States, utilizing a comprehensive analysis of demographic and economic data. Our findings reveal a significant decline in birth rates within this group during and following the economic downturn, highlighting the intricate relationship between economic stability and reproductive decisions. This research contributes to our understanding of how macroeconomic factors can have profound effects on personal life choices, emphasizing the need for supportive policies targeting young individuals during economic crises."
-format: html
+format: pdf
 toc: true
 number-sections: true
 bibliography: references.bib
