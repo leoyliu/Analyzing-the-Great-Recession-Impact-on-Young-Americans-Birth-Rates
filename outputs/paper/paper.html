@@ -75,7 +75,12 @@ div.csl-indent {
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">2.3</span> Variables</a></li>
   <li><a href="#measurements" id="toc-measurements" class="nav-link" data-scroll-target="#measurements"><span class="header-section-number">2.4</span> Measurements</a></li>
   </ul></li>
-  <li><a href="#sec-result" id="toc-sec-result" class="nav-link" data-scroll-target="#sec-result"><span class="header-section-number">3</span> Results</a></li>
+  <li><a href="#sec-result" id="toc-sec-result" class="nav-link" data-scroll-target="#sec-result"><span class="header-section-number">3</span> Results</a>
+  <ul class="collapse">
+  <li><a href="#overall-trend-in-us-birth-rates" id="toc-overall-trend-in-us-birth-rates" class="nav-link" data-scroll-target="#overall-trend-in-us-birth-rates"><span class="header-section-number">3.1</span> Overall Trend in US Birth Rates</a></li>
+  <li><a href="#trends-in-birth-rates-by-age-group" id="toc-trends-in-birth-rates-by-age-group" class="nav-link" data-scroll-target="#trends-in-birth-rates-by-age-group"><span class="header-section-number">3.2</span> Trends in Birth Rates by Age Group</a></li>
+  <li><a href="#change-in-birth-rates-by-state" id="toc-change-in-birth-rates-by-state" class="nav-link" data-scroll-target="#change-in-birth-rates-by-state"><span class="header-section-number">3.3</span> Change in Birth Rates by State</a></li>
+  </ul></li>
   <li><a href="#sec-discussion" id="toc-sec-discussion" class="nav-link" data-scroll-target="#sec-discussion"><span class="header-section-number">4</span> Discussion</a>
   <ul class="collapse">
   <li><a href="#findings" id="toc-findings" class="nav-link" data-scroll-target="#findings"><span class="header-section-number">4.1</span> Findings</a></li>
@@ -136,38 +141,27 @@ div.csl-indent {
 </section>
 <section id="sec-data" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Data</h1>
-<p>This section aims to offer an insightful understanding of the dataset utilized in our analysis, focusing on its content, origin, and the methods applied for data manipulation and visualization.</p>
+<p>This section aims to offer an insightful understanding of the dataset utilized in our analysis. The dataset captures the birth rates across various demographics in the United States from 1980 to 2020. The data provide a broader context, allowing an analysis of trends over time and across different economic cycles, including the period of the Great Recession.</p>
 <section id="source" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="source"><span class="header-section-number">2.1</span> Source</h2>
 <p>// TODO: Add explanation for source</p>
-<p>Although alternative datasets were considered, this specific dataset was selected for its detailed year-wise breakdown and diversity. Other datasets either lacked the temporal detail or variety present in our chosen dataset.</p>
+<p>While there were alternative datasets available from other public and private sources, this dataset was chosen due to its comprehensive coverage, reliability, and the level of detail it offers. It includes data from the National Center for Health Statistics (NCHS) and the U.S. Census Bureau, which are both reputable sources of demographic data.</p>
 </section>
 <section id="methodology" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="methodology"><span class="header-section-number">2.2</span> Methodology</h2>
 <p>The data was processed and cleaned using R<span class="citation" data-cites="citeR">(<a href="#ref-citeR" role="doc-biblioref">R Core Team 2020</a>)</span>, a powerful statistical programming language. Moreover, most of the data in our dataset are previously cleaned in the project we are replicating. Thus, figure 1 directly used data from <code>outputs/data/fig_1.csv</code> without any further cleaning necessary as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to <code>outputs/data/fig_1.csv</code> from <code>inputs/data/fig_1.csv</code>.</p>
-<p>In figure 2, the dataset was imported from <code>inputs/data/fig_2.csv</code> and used <code>dpylr</code><span class="citation" data-cites="dpylr">(<a href="#ref-dpylr" role="doc-biblioref"><strong>dpylr?</strong></a>)</span> to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using <code>tidyverse</code><span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref"><strong>tidyverse?</strong></a>)</span> and changed into names that represent the content of the data better. Moreover, these data is then pivoted using <code>tidyverse</code><span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref"><strong>tidyverse?</strong></a>)</span> in order to be graphed properly using <code>ggplot2</code><span class="citation" data-cites="ggplot2">(<a href="#ref-ggplot2" role="doc-biblioref"><strong>ggplot2?</strong></a>)</span>.</p>
-<p>In figure 3, the first dataset was imported from <code>inputs/data/fig_3a.csv</code> and the dataset containing American states information was from <code>mapdata</code><span class="citation" data-cites="mapdata">(<a href="#ref-mapdata" role="doc-biblioref"><strong>mapdata?</strong></a>)</span>. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can’t be properly showned in the dataset from <code>mapdata</code><span class="citation" data-cites="mapdata">(<a href="#ref-mapdata" role="doc-biblioref"><strong>mapdata?</strong></a>)</span>. Then, a temporary data frame is created with tibble from <code>tidyverse</code><span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref"><strong>tidyverse?</strong></a>)</span> with the abbreviated state names from <code>inputs/data/fig_3a.csv</code> and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from <code>dpylr</code><span class="citation" data-cites="dpylr">(<a href="#ref-dpylr" role="doc-biblioref"><strong>dpylr?</strong></a>)</span>, which is then selected and renamed using <code>tidyverse</code><span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref"><strong>tidyverse?</strong></a>)</span>. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with <code>heaven</code><span class="citation" data-cites="heaven">(<a href="#ref-heaven" role="doc-biblioref"><strong>heaven?</strong></a>)</span>.</p>
-<p>In all three figures, the library <code>here</code><span class="citation" data-cites="here">(<a href="#ref-here" role="doc-biblioref"><strong>here?</strong></a>)</span> were used to ensure file path is accessible in all directories.</p>
+<p>In figure 2, the dataset was imported from <code>inputs/data/fig_2.csv</code> and used <code>dpylr</code><span class="citation" data-cites="citedplyr">(<a href="#ref-citedplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using <code>tidyverse</code><span class="citation" data-cites="citetidyverse">(<a href="#ref-citetidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span> and changed into names that represent the content of the data better. Moreover, these data is then pivoted using <code>tidyverse</code><span class="citation" data-cites="citetidyverse">(<a href="#ref-citetidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span> in order to be graphed properly using <code>ggplot2</code><span class="citation" data-cites="citeggplot">(<a href="#ref-citeggplot" role="doc-biblioref">Wickham 2016</a>)</span>.</p>
+<p>In figure 3, the first dataset was imported from <code>inputs/data/fig_3a.csv</code> and the dataset containing American states information was from <code>mapdata</code>. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can’t be properly showned in the dataset from <code>mapdata</code>. Then, a temporary data frame is created with tibble from <code>tidyverse</code><span class="citation" data-cites="citetidyverse">(<a href="#ref-citetidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span> with the abbreviated state names from <code>inputs/data/fig_3a.csv</code> and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from <code>dpylr</code><span class="citation" data-cites="citedplyr">(<a href="#ref-citedplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span>, which is then selected and renamed using <code>tidyverse</code><span class="citation" data-cites="citetidyverse">(<a href="#ref-citetidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span>. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with <code>haven</code><span class="citation" data-cites="citehaven">(<a href="#ref-citehaven" role="doc-biblioref">Wickham, Miller, and Smith 2023</a>)</span>.</p>
+<p>In all three figures, the library <code>here</code> were used to ensure file path is accessible in all directories.</p>
 </section>
 <section id="variables" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="variables"><span class="header-section-number">2.3</span> Variables</h2>
 <p>To better understand the data, the summary_table dataset was developed to offer a more structured and aggregated view of the birth rate data. By transforming and summarizing the data into a format that displays birth rate against years, this dataset simplifies the task of identifying and analyzing trends over time.</p>
 <div class="cell">
 <div class="cell-output-display">
+<div id="tbl-display-raw-data" class="anchored">
 <table class="table table-sm table-striped small">
-<caption>Birth rate of all groups from 1980 to 1989 </caption>
-<colgroup>
-<col style="width: 6%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 11%">
-</colgroup>
+<caption>Table&nbsp;1: Birth rate of all groups from 1980 to 1989</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Year</th>
@@ -177,9 +171,6 @@ div.csl-indent {
 <th style="text-align: right;">30 to 34</th>
 <th style="text-align: right;">35 to 39</th>
 <th style="text-align: right;">40 to 44</th>
-<th style="text-align: right;">white</th>
-<th style="text-align: right;">black</th>
-<th style="text-align: right;">hispanic</th>
 </tr>
 </thead>
 <tbody>
@@ -191,9 +182,6 @@ div.csl-indent {
 <td style="text-align: right;">61.9</td>
 <td style="text-align: right;">19.8</td>
 <td style="text-align: right;">3.9</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1981</td>
@@ -203,9 +191,6 @@ div.csl-indent {
 <td style="text-align: right;">61.4</td>
 <td style="text-align: right;">20.0</td>
 <td style="text-align: right;">3.8</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1982</td>
@@ -215,9 +200,6 @@ div.csl-indent {
 <td style="text-align: right;">64.1</td>
 <td style="text-align: right;">21.2</td>
 <td style="text-align: right;">3.9</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1983</td>
@@ -227,9 +209,6 @@ div.csl-indent {
 <td style="text-align: right;">64.9</td>
 <td style="text-align: right;">22.0</td>
 <td style="text-align: right;">3.9</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1984</td>
@@ -239,9 +218,6 @@ div.csl-indent {
 <td style="text-align: right;">67.0</td>
 <td style="text-align: right;">22.9</td>
 <td style="text-align: right;">3.9</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1985</td>
@@ -251,9 +227,6 @@ div.csl-indent {
 <td style="text-align: right;">69.1</td>
 <td style="text-align: right;">24.0</td>
 <td style="text-align: right;">4.0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1986</td>
@@ -263,9 +236,6 @@ div.csl-indent {
 <td style="text-align: right;">70.1</td>
 <td style="text-align: right;">24.4</td>
 <td style="text-align: right;">4.1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1987</td>
@@ -275,9 +245,6 @@ div.csl-indent {
 <td style="text-align: right;">72.1</td>
 <td style="text-align: right;">26.3</td>
 <td style="text-align: right;">4.4</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1988</td>
@@ -287,9 +254,6 @@ div.csl-indent {
 <td style="text-align: right;">74.8</td>
 <td style="text-align: right;">28.1</td>
 <td style="text-align: right;">4.8</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1989</td>
@@ -299,27 +263,14 @@ div.csl-indent {
 <td style="text-align: right;">77.4</td>
 <td style="text-align: right;">29.9</td>
 <td style="text-align: right;">5.2</td>
-<td style="text-align: right;">60.5</td>
-<td style="text-align: right;">84.8</td>
-<td style="text-align: right;">104.9</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>This table presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.</p>
+</div>
+<p><a href="#tbl-display-raw-data">Table&nbsp;1</a> uses R<span class="citation" data-cites="kable">(<a href="#ref-kable" role="doc-biblioref"><strong>kable?</strong></a>)</span> presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.</p>
 <p>// Visualization of the data for intuition</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-trends-in-birth-rate" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="paper_files/figure-html/fig-trends-in-birth-rate-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Trends in Birth Rate in US</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><a href="#fig-trends-in-birth-rate">Figure&nbsp;1</a>, reflecting the trend in birth rates in America over time, captures a significant decline in birth rates commencing around the onset of the Great Recession in 2007-2008. According to Kearney et al.&nbsp;(2022), the economic stress associated with the Great Recession contributed to a marked downturn in birth rates, with a 7.2 percent drop from 68.1 to 63.2 births per 1,000 women observed between 2008 and 2011. This visual representation is particularly striking as it indicates a sharp and sustained decrease in birth rates coinciding with and following the Great Recession, without a subsequent recovery to pre-recession levels.</p>
 </section>
 <section id="measurements" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="measurements"><span class="header-section-number">2.4</span> Measurements</h2>
@@ -329,54 +280,74 @@ div.csl-indent {
 </section>
 <section id="sec-result" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Results</h1>
-<p>In this section, we delve into the core findings of our study, shedding light on the intricate patterns and trends of birth rate in US.</p>
+<p><a href="#sec-result">Section&nbsp;3</a> presents the core findings from our comprehensive analysis of US birth rates, specifically focusing on the changes observed over time, across different age groups of young women, and by state.</p>
+<section id="overall-trend-in-us-birth-rates" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="overall-trend-in-us-birth-rates"><span class="header-section-number">3.1</span> Overall Trend in US Birth Rates</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-trends-in-birth-rate" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-trends-in-birth-rate-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Trend in Birth Rates in US</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>First, we examine the overall trend, showcasing a substantial decline following the Great Recession. <a href="#fig-trends-in-birth-rate">Figure&nbsp;1</a>, reflecting the trend in birth rates in America over time, captures a significant decline in birth rates commencing around the onset of the Great Recession in 2007-2008. According to Kearney et al.&nbsp;(2022), the economic stress associated with the Great Recession contributed to a marked downturn in birth rates, with a 7.2 percent drop from 68.1 to 63.2 births per 1,000 women observed between 2008 and 2011. This visual representation is particularly striking as it indicates a sharp and sustained decrease in birth rates coinciding with and following the Great Recession, without a subsequent recovery to pre-recession levels.</p>
+</section>
+<section id="trends-in-birth-rates-by-age-group" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="trends-in-birth-rates-by-age-group"><span class="header-section-number">3.2</span> Trends in Birth Rates by Age Group</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-trends-in-birth-rate-in-young-people" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="paper_files/figure-html/fig-trends-in-birth-rate-in-young-people-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Trends in Birth Rate Among Young People in US</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;2: Trends in Birth Rates by Age Group</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-trends-in-birth-rate-in-young-people">Figure&nbsp;2</a> displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steafy slow increase.</p>
-<p>// TODO: Transit to following figure</p>
+<p>Transitioning to age-specific trends, we direct our attention to the young women’s demographic. <a href="#fig-trends-in-birth-rate-in-young-people">Figure&nbsp;2</a> displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steafy slow increase.</p>
+</section>
+<section id="change-in-birth-rates-by-state" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="change-in-birth-rates-by-state"><span class="header-section-number">3.3</span> Change in Birth Rates by State</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-demograph" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-change-in-birth-rates-by-state" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="paper_files/figure-html/fig-demograph-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: Demograph</figcaption>
+<p><img src="paper_files/figure-html/fig-change-in-birth-rates-by-state-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Change in Birth Rates by State, 2004–2008 to 2015–2019</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-demograph">Figure&nbsp;3</a> portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map’s color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.</p>
+<p>We then shift our focus to geographical variations in birth rates across states, presented in <a href="#fig-change-in-birth-rates-by-state">Figure&nbsp;3</a>. The graph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map’s color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.</p>
+<p>In summary, our results encapsulate a comprehensive view of the declining birth rates in the U.S., revealing both temporal and demographic patterns. The forthcoming <a href="#sec-discussion">Section&nbsp;4</a> will delve into the potential influences and biases that may underlie these trends.</p>
 <div style="page-break-after: always;"></div>
+</section>
 </section>
 <section id="sec-discussion" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Discussion</h1>
-<p>// TODO</p>
+<p>The findings of this study offer a layered perspective on the decline in birth rates among young people in the United States, particularly in the context of the Great Recession. Our analysis provides a nuanced understanding of the multifaceted influences on demographic trends.</p>
 <section id="findings" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="findings"><span class="header-section-number">4.1</span> Findings</h2>
-<p>// TODO</p>
+<p>In our replication of Kearney et al.&nbsp;(2022), we reaffirmed the central finding that the Great Recession has had a lasting impact on birth rates among young people in the United States. Our analysis of Figures 1 and 2a showed a pronounced decline in birth rates across all age groups, with the steepest decrease observed among those aged 15-29. This trend extended beyond the economic recovery, suggesting that the Great Recession may have fundamentally altered the family planning trajectory of a generation.</p>
 </section>
 <section id="economic-impact-insights" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="economic-impact-insights"><span class="header-section-number">4.2</span> Economic Impact Insights</h2>
-<p>// TODO</p>
+<p>The data presented in our study underscores the profound influence of economic factors on birth rates among young Americans, particularly in the wake of the Great Recession. The decline in birth rates aligns temporally with the economic downturn, suggesting a direct correlation between financial uncertainty and decisions regarding family planning. This is consistent with Kearney et al.&nbsp;(2022), who also observed a notable decrease in birth rates post-2007. Our findings further delve into the nuances of this relationship, illustrating how economic stressors extend beyond immediate financial strain to influence long-term life choices. The persistence of this trend, despite economic recovery, indicates a lasting impact on the psyche of young individuals, potentially altering their perception of financial stability and its importance in family planning. This insight points to the need for economic policies that provide not only immediate relief but also long-term security to mitigate such profound impacts on demographic trends.</p>
 </section>
 <section id="societal-and-technological-influences" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="societal-and-technological-influences"><span class="header-section-number">4.3</span> Societal and Technological Influences</h2>
-<p>// TODO</p>
+<p>Our analysis also highlights the role of societal and technological changes in shaping birth rate trends among young people. The significant decline in birth rates within the 15-29 age group, as detailed in our findings, suggests a shift in life priorities that may be influenced by broader societal changes. These include increased access to higher education, career opportunities, and advancements in reproductive technology, which have provided young people with more choices and greater control over their reproductive decisions. This is in line with the observations made by Kearney et al.&nbsp;(2022), who speculated on the influence of shifting priorities and the second demographic transition. Our study expands on this by suggesting that the integration of technology and societal evolution has created a new landscape for family planning, where traditional timelines and expectations may no longer hold the same weight. This evolution points to the necessity of incorporating societal and technological considerations into policy-making to address the changing dynamics of family planning in the modern era.</p>
 </section>
 <section id="weaknesses" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="weaknesses"><span class="header-section-number">4.4</span> Weaknesses</h2>
-<p>// TODO</p>
+<p>One limitation of our study is the potential for unobserved variables that could affect birth rates, such as cultural shifts and changes in social norms, which were not fully captured in the data. Additionally, the original study did not account for the influence of the Affordable Care Act and its potential impact on family planning decisions, an area our study also does not explore.</p>
 </section>
 <section id="future-research-directions" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="future-research-directions"><span class="header-section-number">4.5</span> Future Research Directions</h2>
-<p>// TODO</p>
+<p>Future research should aim to disentangle these complex relationships further, perhaps through longitudinal studies or by incorporating more granular data on individual socioeconomic status. Understanding these dynamics is crucial for developing policies that support young people in their family planning decisions during and after economic downturns.</p>
 <div style="page-break-after: always;"></div>
 </section>
 </section>
@@ -385,6 +356,18 @@ div.csl-indent {
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-citeR" class="csl-entry" role="listitem">
 R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-citeggplot" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-citetidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-citedplyr" class="csl-entry" role="listitem">
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://dplyr.tidyverse.org">https://dplyr.tidyverse.org</a>.
+</div>
+<div id="ref-citehaven" class="csl-entry" role="listitem">
+Wickham, Hadley, Evan Miller, and Danny Smith. 2023. <em>Haven: Import and Export ’SPSS’, ’Stata’ and ’SAS’ Files</em>. <a href="https://haven.tidyverse.org">https://haven.tidyverse.org</a>.
 </div>
 </div>
 <div style="page-break-after: always;"></div>

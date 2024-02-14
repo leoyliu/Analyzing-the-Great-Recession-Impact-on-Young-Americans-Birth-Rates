@@ -7,7 +7,7 @@ thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-th
 date: today
 date-format: long
 abstract: "In this study, we explore the impact of the Great Recession on birth rates among young people in the United States, utilizing a comprehensive analysis of demographic and economic data. Our findings reveal a significant decline in birth rates within this group during and following the economic downturn, highlighting the intricate relationship between economic stability and reproductive decisions. This research contributes to our understanding of how macroeconomic factors can have profound effects on personal life choices, emphasizing the need for supportive policies targeting young individuals during economic crises."
-format: pdf
+format: html
 toc: true
 number-sections: true
 bibliography: references.bib
@@ -73,17 +73,17 @@ To better understand the data, the summary_table dataset was developed to offer 
 rawdata <- read.csv(here::here("inputs/data/figs_2a_2b.csv"))
 
 rawdata |>
-  select(year,brate_1519,brate_2024,brate_2529,brate_3034,brate_3539,brate_4044,brate_whitenh,brate_blacknh,brate_hisp) |>
+  select(year,brate_1519,brate_2024,brate_2529,brate_3034,brate_3539,brate_4044) |>
   slice(1:10) |>
   kable(
     caption = "Birth rate of all groups from 1980 to 1989",
-    col.names = c("Year", "15 to 19", "20 to 24","25 to 29", "30 to 34", "35 to 39", "40 to 44", "White", "Black", "Hispanic"),
+    col.names = c("Year", "15 to 19", "20 to 24","25 to 29", "30 to 34", "35 to 39", "40 to 44"),
     digits = 1,
     booktabs = TRUE
   )
 ```
 
-@tbl-display-raw-data uses R[@kable] presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.
+@tbl-display-raw-data uses R[@kable] presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, we are also concerned with the birth rate of related states in America.
 
 
 // Visualization of the data for intuition
