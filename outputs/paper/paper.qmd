@@ -78,17 +78,13 @@ rawdata |>
   slice(1:10) |>
   kable(
     caption = "Birth rate of all groups from 1980 to 1989",
-    col.names = c("Year", "15 to 19", "20 to 24","25 to 29", "30 to 34", "35 to 39", "40 to 44", "white", "black", "hispanic"),
+    col.names = c("Year", "15 to 19", "20 to 24","25 to 29", "30 to 34", "35 to 39", "40 to 44", "White", "Black", "Hispanic"),
     digits = 1,
     booktabs = TRUE
   )
 ```
 
-This table presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.
-
-
-// Visualization of the data for intuition
-
+@tbl-display-raw-data presents the birth rates for various age groups and racial categories in the United States from the year 1980 to 1989. Moreover, the birth rates are typically expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, the last three columns are ethnic groups that describes the birth rates among the white, black, and Hispanic populations. However, some data for these groups are not available except 1989.
 
 ## Measurements
 
@@ -104,7 +100,7 @@ This table presents the birth rates for various age groups and racial categories
 ## Overall Trend in US Birth Rates
 ```{r}
 #| label: fig-trends-in-birth-rate
-#| fig-cap: Trends in Birth Rate in US
+#| fig-cap: Trend in Birth Rates in US
 #| echo: false
 
 figure1 <- read.csv(here::here("outputs/data/figure_1.csv"))
@@ -125,10 +121,10 @@ ggplot(figure1,
 ```
 First, we examine the overall trend, showcasing a substantial decline following the Great Recession. @fig-trends-in-birth-rate, reflecting the trend in birth rates in America over time, captures a significant decline in birth rates commencing around the onset of the Great Recession in 2007-2008. According to Kearney et al. (2022), the economic stress associated with the Great Recession contributed to a marked downturn in birth rates, with a 7.2 percent drop from 68.1 to 63.2 births per 1,000 women observed between 2008 and 2011. This visual representation is particularly striking as it indicates a sharp and sustained decrease in birth rates coinciding with and following the Great Recession, without a subsequent recovery to pre-recession levels.
 
-## Trend in birth rate among yong women
+## Trends in Birth Rates by Age Group
 ```{r}
 #| label: fig-trends-in-birth-rate-in-young-people
-#| fig-cap: Trends in Birth Rate Among Young People in US
+#| fig-cap: Trends in Birth Rates by Age Group
 #| echo: false
 
 figure2 <- read.csv(here::here("outputs/data/figure_2.csv"))
@@ -150,8 +146,8 @@ Transitioning to age-specific trends, we direct our attention to the young women
 
 ## Change in Birth Rates by State
 ```{r}
-#| label: fig-demograph
-#| fig-cap: Demograph
+#| label: fig-change-in-birth-rates-by-state
+#| fig-cap: Change in Birth Rates by State, 2004–2008 to 2015–2019
 #| echo: false
 
 figure3a <- read.csv(here::here("outputs/data/figure_3a.csv"))
@@ -163,7 +159,7 @@ ggplot(figure3a, aes(x = long, y = lat, group=group)) +
        fill = 'Change in Birth Rate') +
   theme_void()
 ```
-We then shift our focus to geographical variations in birth rates across states, presented in @fig-demograph. The graph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
+We then shift our focus to geographical variations in birth rates across states, presented in @fig-change-in-birth-rates-by-state. The graph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
 
 In summary, our results encapsulate a comprehensive view of the declining birth rates in the U.S., revealing both temporal and demographic patterns. The forthcoming @sec-discussion will delve into the potential influences and biases that may underlie these trends.
 
@@ -171,27 +167,28 @@ In summary, our results encapsulate a comprehensive view of the declining birth 
 
 # Discussion {#sec-discussion}
 
-// TODO
+The findings of this study offer a layered perspective on the decline in birth rates among young people in the United States, particularly in the context of the Great Recession. Our analysis provides a nuanced understanding of the multifaceted influences on demographic trends.
 
 ## Findings
 
-// TODO
+In our replication of Kearney et al. (2022), we reaffirmed the central finding that the Great Recession has had a lasting impact on birth rates among young people in the United States. Our analysis of Figures 1 and 2a showed a pronounced decline in birth rates across all age groups, with the steepest decrease observed among those aged 15-29. This trend extended beyond the economic recovery, suggesting that the Great Recession may have fundamentally altered the family planning trajectory of a generation.
+
 
 ## Economic Impact Insights
 
-// TODO
+The data presented in our study underscores the profound influence of economic factors on birth rates among young Americans, particularly in the wake of the Great Recession. The decline in birth rates aligns temporally with the economic downturn, suggesting a direct correlation between financial uncertainty and decisions regarding family planning. This is consistent with Kearney et al. (2022), who also observed a notable decrease in birth rates post-2007. Our findings further delve into the nuances of this relationship, illustrating how economic stressors extend beyond immediate financial strain to influence long-term life choices. The persistence of this trend, despite economic recovery, indicates a lasting impact on the psyche of young individuals, potentially altering their perception of financial stability and its importance in family planning. This insight points to the need for economic policies that provide not only immediate relief but also long-term security to mitigate such profound impacts on demographic trends.
 
 ## Societal and Technological Influences
 
-// TODO
+Our analysis also highlights the role of societal and technological changes in shaping birth rate trends among young people. The significant decline in birth rates within the 15-29 age group, as detailed in our findings, suggests a shift in life priorities that may be influenced by broader societal changes. These include increased access to higher education, career opportunities, and advancements in reproductive technology, which have provided young people with more choices and greater control over their reproductive decisions. This is in line with the observations made by Kearney et al. (2022), who speculated on the influence of shifting priorities and the second demographic transition. Our study expands on this by suggesting that the integration of technology and societal evolution has created a new landscape for family planning, where traditional timelines and expectations may no longer hold the same weight. This evolution points to the necessity of incorporating societal and technological considerations into policy-making to address the changing dynamics of family planning in the modern era.
 
 ## Weaknesses
 
-// TODO
+One limitation of our study is the potential for unobserved variables that could affect birth rates, such as cultural shifts and changes in social norms, which were not fully captured in the data. Additionally, the original study did not account for the influence of the Affordable Care Act and its potential impact on family planning decisions, an area our study also does not explore.
 
 ## Future Research Directions
 
-// TODO
+Future research should aim to disentangle these complex relationships further, perhaps through longitudinal studies or by incorporating more granular data on individual socioeconomic status. Understanding these dynamics is crucial for developing policies that support young people in their family planning decisions during and after economic downturns.
 
 \newpage
 
