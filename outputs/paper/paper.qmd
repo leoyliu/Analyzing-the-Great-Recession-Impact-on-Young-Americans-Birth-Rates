@@ -35,7 +35,7 @@ library(kableExtra)
 
 The Great Recession, a defining economic event of the early 21st century, has been subject to extensive analysis for its profound effects on employment, housing, and financial systems globally. However, its impact on demographic trends, particularly birth rates among young people in the United States, has not been thoroughly explored. This paper aims to fill this gap by examining how the economic downturn influenced reproductive decisions among this demographic.
 
-Utilizing a blend of quantitative data analysis and demographic research, we investigated birth rate trends among young adults during and following the recessionary period. Our methodology involved analyzing birth rate data in conjunction with economic indicators such as unemployment rates, income levels, and housing market trends to draw correlations and insights.
+Utilizing a blend of quantitative data analysis and demographic research, we investigated birth rate trends among young adults during and following the recessionary period. Our methodology involved analyzing birth rate data in conjunction with economic indicators such as unemployment rates, income levels, and housing market trends to draw correlations and insights. // TODO
 
 Our findings reveal a significant decline in birth rates among young Americans during the recession, with lingering effects in the subsequent years. This trend suggests that economic instability has a profound impact on personal life choices, including the decision to have children. The implications of these findings are far-reaching, affecting not only demographic forecasting but also social policy and economic recovery strategies.
 
@@ -50,9 +50,11 @@ This section aims to offer an insightful understanding of the dataset utilized i
 ## Source
 // TODO: Add explanation for source
 
-While there were alternative datasets available from other public and private sources, this dataset was chosen due to its comprehensive coverage, reliability, and the level of detail it offers. It includes data from the National Center for Health Statistics (NCHS) and the U.S. Census Bureau, which are both reputable sources of demographic data.
+While there were alternative datasets available from other public and private sources, this dataset was chosen due to its comprehensive coverage, reliability, and the level of detail it offers. It includes data from the National Center for Health Statistics (NCHS) [TODO] and the U.S. Census Bureau [TODO], which are both reputable sources of demographic data.
 
 ## Methodology
+// TODO
+
 The data was processed and cleaned using R[@citeR], a powerful statistical programming language. Moreover, most of the data in our dataset are previously cleaned in the project we are replicating. Thus, figure 1 directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
 
 In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@citedplyr] to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@citetidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@citetidyverse] in order to be graphed properly using `ggplot2`[@citeggplot].
@@ -174,7 +176,6 @@ The findings of this study offer a layered perspective on the decline in birth r
 ## Findings
 
 In our replication of Kearney et al. (2022), we reaffirmed the central finding that the Great Recession has had a lasting impact on birth rates among young people in the United States. Our analysis of Figures 1 and 2a showed a pronounced decline in birth rates across all age groups, with the steepest decrease observed among those aged 15-29. This trend extended beyond the economic recovery, suggesting that the Great Recession may have fundamentally altered the family planning trajectory of a generation.
-
 
 ## Economic Impact Insights
 
