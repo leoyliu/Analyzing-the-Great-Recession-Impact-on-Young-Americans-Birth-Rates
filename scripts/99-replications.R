@@ -5,6 +5,8 @@
 # Contact: leoy.liu@mail.utoronto.ca, e.teng@mail.utoronto.ca
 # License: MIT
 
+
+#### Workspace setup ####
 library(tidyverse)
 library(dplyr)
 library(here)
@@ -12,7 +14,10 @@ library(mapdata)
 library(ggplot2)
 library(haven)
 
-#figure1
+
+#### Replications ####
+
+## Figure 1 ##
 figure1 <- read.csv(here::here("outputs/data/figure_1.csv"))
 
 ggplot(figure1,
@@ -35,7 +40,7 @@ ggsave(
 )
 
 
-#figure2
+## Figure 2 ##
 figure2 <- read.csv(here::here("outputs/data/figure_2.csv"))
 
 ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
@@ -57,7 +62,7 @@ ggsave(
 )
 
 
-#Figure3
+## Figure 3 ##
 figure3a <- read.csv(here::here("outputs/data/figure_3a.csv"))
 
 ggplot(figure3a, aes(x = long, y = lat, group=group)) +

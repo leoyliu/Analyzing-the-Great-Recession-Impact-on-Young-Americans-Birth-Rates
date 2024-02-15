@@ -3,11 +3,11 @@ title: "Echoes of Economic Downturn: Investigating the Persistent Impact of the 
 author: 
   - Yuanyi (Leo) Liu
   - Qi Er (Emma) Teng
-thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-the-Great-Recession-s-Impact-on-Young-Americans-Birth-Rates/tree/main. A replication of various aspects in this paper are available at: https://doi.org/10.48152/ssrp-srs6-t802"
+thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-the-Great-Recession-Impact-on-Young-Americans-Birth-Rates. A replication of various aspects in this paper are available at: https://doi.org/10.48152/ssrp-srs6-t802"
 date: today
 date-format: long
 abstract: "In this study, we explore the impact of the Great Recession on birth rates among young people in the United States, utilizing a comprehensive analysis of demographic and economic data. Our findings reveal a significant decline in birth rates within this group during and following the economic downturn, highlighting the intricate relationship between economic stability and reproductive decisions. This research contributes to our understanding of how macroeconomic factors can have profound effects on personal life choices, emphasizing the need for supportive policies targeting young individuals during economic crises."
-format: html
+format: pdf
 toc: true
 number-sections: true
 bibliography: references.bib
@@ -18,7 +18,12 @@ bibliography: references.bib
 #| warning: false
 #| message: false
 
+# install.packages("tidyverse")
+# install.packages("dplyr")
+# install.packages("here")
 # install.packages("mapdata")
+# install.packages("ggplot2")
+# install.packages("haven")
 # install.packages("kableExtra")
 
 library(tidyverse)
@@ -29,7 +34,6 @@ library(ggplot2)
 library(haven)
 library(kableExtra)
 ```
-
 
 # Introduction {#sec-intro}
 
@@ -65,7 +69,7 @@ In all three figures, the library `here` were used to ensure file path is access
 
 ## Variables
 
-To better understand the data, the summary_table dataset was developed to offer a more structured and aggregated view of the birth rate data. By transforming and summarizing the data into a format that displays birth rate against years, this dataset simplifies the task of identifying and analyzing trends over time.
+To better understand the data, a summary table was developed to provide a detailed description of each variable, explaining its relevance and how it contributes to our understanding of the topic. Our focus is not only on the direct measures of birth rates but also on a range of demographic and economic variables that offer a comprehensive view of the factors influencing fertility decisions during the recessionary period.
 
 ```{r}
 #| label: tbl-display-raw-data
@@ -84,8 +88,7 @@ rawdata |>
     booktabs = TRUE
   )
 ```
-
-@tbl-display-raw-data uses R[@citekableExtra] presents the birth rates for various age groups in the United States from the year 1980 to 1989. Moreover, the birth rates are expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, we are also concerned with the birth rate of related states in America.
+@tbl-display-raw-data uses `kableExtra`[@citekableExtra] presents the birth rates for various age groups in the United States from the year 1980 to 1989. Moreover, the birth rates are expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, we are also concerned with the birth rate of related states in America.
 
 ```{r}
 #| label: tbl-young-old-br
@@ -104,8 +107,7 @@ cleaned_data |>
     booktabs = TRUE
   )
 ```
-
-@tbl-young-old-br uses R[@citekableExtra] presents the birth rates for the older and younger population from the year 1980 to 1989. This is a more concise table that represents the estimand we are trying to explore. Similarily to @tbl-display-raw-data, the birth rates are expressed by the mean birth rate of the selected age population. Moreover, the Year represent the years from the selected year range.
+@tbl-young-old-br uses `kableExtra`[@citekableExtra] presents the birth rates for the older and younger population from the year 1980 to 1989. This is a more concise table that represents the estimand we are trying to explore. Similarily to @tbl-display-raw-data, the birth rates are expressed by the mean birth rate of the selected age population. Moreover, the Year represent the years from the selected year range.
 
 ## Measurements
 
@@ -168,7 +170,6 @@ ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
 ```
 Transitioning to age-specific trends, we direct our attention to the young women's demographic. @fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steady slow increase.
 
-
 ## Birth Rate Comparison between Young and Old Population
 ```{r}
 #| label: fig-birth-rate-comparison-old-and-young
@@ -191,8 +192,6 @@ ggplot(figure4, aes(x = year, y = brate, color = age_group)) +
         axis.title = element_text(color = "black"))
 ```
 To further visualize this birth rate change between age groups, we will categorize population between age 15 to 29 as young and the population between age 30 to 44 as old. The average birth rate of each group is calculated and displayed according to the corresponding year. The younger age group is represented by blue line and the older age group is represented by red line. It is evident from the graph that the younger age group is higher than that for the old population across the entire time span. However, it is also evident that there is a significant birth rate decrease in the young population after 2007, while older population maintains a slowly increasing trend. Moreover, it can be seen that the difference in birth rate between the two age groups is slowly decreasing, and from the current trend, this change in birth rate seems to be continuously dropping.
-
-
 
 ## Change in Birth Rates by State
 ```{r}
@@ -228,7 +227,6 @@ In our replication of Kearney et al. (2022), we reaffirmed the central finding t
 The significant decline in birth rates among young Americans during and after the Great Recession underscores the profound influence of economic stress on reproductive decisions. This downturn in birth rates is not merely coincidental with the timing of the recession but suggests a deeper, more systemic impact of economic instability on personal life choices, particularly the decision to start or expand a family. The persistence of this trend, even in the years following economic recovery, indicates that the repercussions of the recession extended beyond immediate financial hardship, affecting long-term perceptions of financial security and stability. This is further evidenced by the lack of rebound in birth rates post-recession, which might have been anticipated if the decline were solely due to immediate economic pressures.
 
 The economic model of fertility, which considers the cost of childbearing and rearing alongside the opportunity costs associated with parental time and resources, provides a framework to understand these trends. The recession likely heightened these costs and opportunity costs, making the decision to have children more daunting. Factors such as unemployment, underemployment, and job insecurity could have led to a reevaluation of the feasibility of affording children, contributing to the postponement or forego of childbirth. Additionally, the economic downturn might have altered young adults' expectations and aspirations regarding financial stability, further influencing their family planning decisions.
-
 
 ## Societal and Technological Influences
 

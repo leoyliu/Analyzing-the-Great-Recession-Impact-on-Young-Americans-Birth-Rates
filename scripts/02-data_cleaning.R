@@ -15,16 +15,18 @@ library(mapdata)
 
 #### Cleaned data ####
 
-##Figure 1##
+
+## Figure 1 ##
 figure1 <- read.csv(here::here("inputs/data/fig_1.csv"))
 
-#Write to CSV
+# Write to CSV
 write_csv(
   x = figure1,
   file = "outputs/data/figure_1.csv"
 )
 
-##Figure 2##
+
+## Figure 2 ##
 uncleaned_data <- read.csv(here::here("inputs/data/figs_2a_2b.csv"))
 
 cleaned_data <- uncleaned_data |>
@@ -46,18 +48,19 @@ cleaned_data <- cleaned_data |>
                names_prefix = "br_",
                values_to = "brate")
 
-#Write to CSV
+# Write to CSV
 write_csv(
   x = cleaned_data,
   file = "outputs/data/figure_2.csv"
 )
 
-##Figure 3a##
 
+## Figure 3 ##
 uncleaned_data <- read.csv(here::here("inputs/data/fig_3.csv"))
 
 state <- map_data("state")
 
+## TODO?
 #data <- read_dta(here::here('data/nchs/nchs_births_pop_1990_2019.dta'))
 
 cleaned_data <- uncleaned_data [-c(1, 12), ]
@@ -79,13 +82,14 @@ cleaned_data <- cleaned_data |>
 
 merged_data <- merge(state, cleaned_data, by.x = "region", by.y = "stname", all.x = TRUE)
 
-#Write to CSV
+# Write to CSV
 write_csv(
   x = merged_data,
   file = "outputs/data/figure_3a.csv"
 )
 
-##Figure 4##
+
+## Figure 4 ##
 rawdata <- read.csv(here::here("inputs/data/figs_2a_2b.csv"))
 
 figure4 <- rawdata |>
@@ -105,7 +109,7 @@ figure4$old <- figure4 |>
   ) |>
   rowMeans()
 
-#Write to CSV
+# Write to CSV
 write_csv(
   x = figure4,
   file = "outputs/data/table_2.csv"
@@ -116,7 +120,7 @@ figure4 <- figure4 |>
                names_to = "age_group",
                values_to = "brate")
 
-#Write to CSV
+# Write to CSV
 write_csv(
   x = figure4,
   file = "outputs/data/figure_4.csv"
