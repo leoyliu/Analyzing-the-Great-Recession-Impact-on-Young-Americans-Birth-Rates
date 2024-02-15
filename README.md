@@ -15,8 +15,8 @@ This repository contains a replicated paper from [Kearney, Levine and Pardue (20
 
 The Chat-GPT4 model contributed to the creation of data validation tests.
 
----
+------------------------------------------------------------------------
 
-*Note: Our script does not include a feature for data downloading. For those interested in acquiring the datasets, please consult the study by Kearney, Levine, and Pardue (2022), titled "The Puzzle of Falling US Birth Rates since the Great Recession," available through their [openICPSR project page](https://www.openicpsr.org/openicpsr/project/144981/version/V1/view?path=/openicpsr/144981/fcr:versions/V1/data&type=folder). The relevant files are named fig_1.csv, fig_2a_2b.csv, and fig_3.csv. After downloading, use the `read` function in R to load the data and execute our analysis `R` scripts.
+\*Note: Our script does not include a feature for data downloading. For those interested in acquiring the datasets, please consult the study by Kearney, Levine, and Pardue (2022), titled "The Puzzle of Falling US Birth Rates since the Great Recession," available through their [openICPSR project page](https://www.openicpsr.org/openicpsr/project/144981/version/V1/view?path=/openicpsr/144981/fcr:versions/V1/data&type=folder). The relevant files are named fig_1.csv, fig_2a_2b.csv, and fig_3.csv. After downloading, use the read function in R to load the data and execute our analysis R scripts.
 
----
+------------------------------------------------------------------------

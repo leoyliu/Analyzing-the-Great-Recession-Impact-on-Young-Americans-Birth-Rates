@@ -7,9 +7,6 @@
 
 
 #### Workspace setup ####
-# install.packages("ggprism")
-# install.packages("ggthemes")
-
 library(tidyverse)
 
 
@@ -19,8 +16,9 @@ library(tidyverse)
 ## Figure 3 ##
 
 # Read in the raw data
-figure3 <- read.csv(here::here("outputs/data/figure_3a.csv"))
+figure3 <- read.csv(here::here("outputs/data/figure_3.csv"))
 
+# Make Plot
 ggplot(figure3, aes(x = long, y = lat, group=group)) +
   geom_polygon(aes(fill = brate1544_thsnds_ch_pct)) +
   scale_fill_gradient(low = 'darkred', high = '#FFCCCB') +
@@ -28,6 +26,7 @@ ggplot(figure3, aes(x = long, y = lat, group=group)) +
        fill = 'Change in Birth Rate') +
   theme_void()
 
+# Save Plots
 ggsave(
   "replication/plots/figure3.png"
 )

@@ -222,11 +222,9 @@ As women's educational attainment and labor force involvement have increased, so
 
 The interaction of these economic, social, and technical elements has altered the landscape of family planning for young Americans. While the economic model of fertility provides a framework for understanding these developments, including sociological and technical effects provides a more complete view of the dynamics affecting current birth rate patterns.
 
-## Weaknesses
+## Weaknesses and Future Research Directions
 
 One limitation of our study is the potential for unobserved variables that could affect birth rates, such as cultural shifts and changes in social norms, which were not fully captured in the data. Additionally, the original study did not account for the influence of the Affordable Care Act and its potential impact on family planning decisions, an area our study also does not explore.
-
-## Future Research Directions
 
 Future research should aim to disentangle these complex relationships further, perhaps through longitudinal studies or by incorporating more detailed data on individual socioeconomic status. Understanding these dynamics is crucial for developing policies that support young people in their family planning decisions during and after economic downturns.
 

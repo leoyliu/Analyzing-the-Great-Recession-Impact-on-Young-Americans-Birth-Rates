@@ -41,7 +41,7 @@ simulated_data$Younger <- simulated_data |>
   ) |>
   rowMeans()
 
-simulated_data$Elder <- simulated_data |>
+simulated_data$Older <- simulated_data |>
   select(
     br_3034,br_3539,br_4044
   ) |>
