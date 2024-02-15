@@ -79,9 +79,11 @@ cleaned_data <- cleaned_data |>
 
 merged_data <- merge(state, cleaned_data, by.x = "region", by.y = "stname", all.x = TRUE)
 
+merged_data_cleaned <- select(merged_data, -subregion)
+
 # Write to CSV
 write_csv(
-  x = merged_data,
+  x = merged_data_cleaned,
   file = "outputs/data/figure_3.csv"
 )
 

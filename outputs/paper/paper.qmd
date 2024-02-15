@@ -50,9 +50,9 @@ The paper is structured to facilitate a comprehensive understanding of the study
 This section aims to offer an insightful understanding of the dataset utilized in our analysis. The dataset captures the birth rates across various demographics in the United States from 1980 to 2020. The data provide a broader context, allowing an analysis of trends over time and across different economic cycles, including the period of the Great Recession.
 
 ## Source and Methodology
-Data on birth rates for women aged 15-44 were sourced from National Vital Statistics Reports covering 2015, 2019, and 2020 [@cite2015birth; @cite2019birth; @cite2020birth], compiled from birth certificates across the US and the District of Columbia. @citeoriginal provided aggregated birth data for six cohorts over five-year spans, derived from NBER Natality Database [@citeNBER] and NCHS microdata [@citeNCHS] for 1980-2019. In this study, we simply used the replication data package provided by @citeoriginal for analysis.
+Data on birth rates for women aged 15-44 were sourced from National Vital Statistics Reports covering 2015, 2019, and 2020 [@cite2015birth; @cite2019birth; @cite2020birth], compiled from birth certificates across the US and the District of Columbia. @citeoriginal provided aggregated birth data for six cohorts over five-year spans, derived from the NBER Natality Database [@citeNBER] and NCHS microdata [@citeNCHS] for 1980-2019. In this study, we simply used the replication data package provided by @citeoriginal for analysis.
 
-While there were alternative datasets available from other public and private sources, this dataset was chosen due to its comprehensive coverage, reliability, and the level of detail it offers. It includes data from the National Center for Health Statistics (NCHS) [@citeNCHS] and the U.S. Census Bureau [@citeUSCB], which are both reputable sources of demographic data.
+While there were alternative datasets available from other public and private sources, this dataset was chosen due to its comprehensive coverage, reliability, and the level of detail it offers. It includes data from the National Center for Health Statistics [@citeNCHS] and the U.S. Census Bureau, which are both reputable sources of demographic data.
 
 The data was processed and cleaned using R[@citeR], a powerful statistical programming language. For key operations, please refer to the [@sec-appendix]. 
 
@@ -104,7 +104,6 @@ For each age group, birth rates were calculated by dividing the total number of 
 
 In addition to age-specific birth rates, state-level data were also analyzed to identify geographic variations in birth rate trends. This involved mapping birth rates against state populations, taking into consideration the exclusion of data from states like Alaska and Hawaii where mapping constraints exist. Further details on this aspect of our study are discussed in @sec-result.
 
-\newpage
 
 # Results {#sec-result}
 
@@ -197,7 +196,7 @@ ggplot(figure3a, aes(x = long, y = lat, group=group)) +
 ```
 We then shift our focus to geographical variations in birth rates across states, presented in @fig-change-in-birth-rates-by-state. The graph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
 
-In summary, our results encapsulate a comprehensive view of the declining birth rates in the U.S., revealing both temporal and demographic patterns. The forthcoming @sec-discussion will delve into the potential influences and biases that may underlie these trends.
+In conclusion, our findings provide a complete perspective of dropping birth rates in the United States, demonstrating both temporal and demographic tendencies. The upcoming @sec-discussion will look at the various variables and biases that may be driving these trends.
 
 \newpage
 
@@ -211,17 +210,17 @@ In our replication of @citeoriginal, we reaffirmed the central finding that the 
 
 ## Economic Impact Insights
 
-The significant decline in birth rates among young Americans during and after the Great Recession underscores the profound influence of economic stress on reproductive decisions. This downturn in birth rates is not merely coincidental with the timing of the recession but suggests a deeper, more systemic impact of economic instability on personal life choices, particularly the decision to start or expand a family. The persistence of this trend, even in the years following economic recovery, indicates that the repercussions of the recession extended beyond immediate financial hardship, affecting long-term perceptions of financial security and stability. This is further evidenced by the lack of rebound in birth rates post-recession, which might have been anticipated if the decline were solely due to immediate economic pressures.
+The dramatic drop in birth rates among young Americans during and after the Great Recession demonstrates the profound impact of economic hardship on reproductive decisions. This decline in birth rates is not simply coincidental with the date of the recession, but rather indicates a deeper, more systemic influence of economic insecurity on personal life choices, notably the decision to establish or expand a family. The persistence of this pattern, even in the years after economic recovery, suggests that the effects of the recession went beyond immediate financial hardship, influencing long-term views of financial security and stability. This is further evidenced by the lack of rebound in birth rates post-recession, which might have been anticipated if the decline were solely due to immediate economic pressures.
 
-The economic model of fertility, which considers the cost of childbearing and rearing alongside the opportunity costs associated with parental time and resources, provides a framework to understand these trends. The recession likely heightened these costs and opportunity costs, making the decision to have children more daunting. Factors such as unemployment, underemployment, and job insecurity could have led to a reevaluation of the feasibility of affording children, contributing to the postponement or forego of childbirth. Additionally, the economic downturn might have altered young adults' expectations and aspirations regarding financial stability, further influencing their family planning decisions.
+The economic model of fertility provides a framework for understanding these patterns by taking into account the cost of pregnancy and raising as well as the opportunity costs associated with parental time and resources. The recession likely increased these expenditures and opportunity costs, making the decision to have children more difficult. Unemployment and job uncertainty may have caused a reevaluation of the feasibility of having children, resulting in the postponement or avoidance of childbirth. Furthermore, the economic downturn may have shifted young adults' expectations and desires for financial security, impacting their family planning decisions.
 
 ## Societal and Technological Influences
 
-Apart from economic factors, the decline in birth rates among young people also reflects broader societal and technological shifts. The period following the Great Recession coincided with significant changes in social norms, increased educational and career opportunities for women, and advancements in reproductive technology. These factors collectively have empowered individuals, especially women, to make more autonomous decisions regarding their reproductive health and family planning.
+Apart from economic factors, the decline in birth rates among young people also reflects broader societal and technological shifts. The period following the Great Recession coincided with significant changes in social norms, increased educational and career opportunities for women, and advancements in reproductive technology. These factors collectively have empowered individuals, especially women, to make more independent decisions regarding their reproductive health and family planning.
 
-The rise in educational attainment and labor force participation among women has been accompanied by a corresponding increase in the opportunity cost of childbearing, potentially contributing to the decline in birth rates. Technological advancements, particularly in contraception, have provided women with greater control over their fertility, enabling more deliberate planning around childbirth. Social shifts, such as delayed marriage and the increasing acceptance of childlessness or smaller family sizes as viable lifestyle choices, further compound these trends.
+As women's educational attainment and labor force involvement have increased, so has the opportunity cost of childbirth, potentially contributing to the drop in birth rates. Technological developments have given women greater control over their fertility, allowing for more intentional planning around childbirth. Social changes, such as delayed marriage and a growing acceptance of childlessness or smaller family sizes as realistic lifestyle options, further compound these tendencies.
 
-The interplay between these economic, societal, and technological factors has reshaped the landscape of family planning for young Americans. While the economic model of fertility provides a foundation for understanding these trends, the inclusion of societal and technological influences offers a more comprehensive picture of the forces at play in shaping contemporary birth rate patterns.
+The interaction of these economic, social, and technical elements has altered the landscape of family planning for young Americans. While the economic model of fertility provides a framework for understanding these developments, including sociological and technical effects provides a more complete view of the dynamics affecting current birth rate patterns.
 
 ## Weaknesses
 
@@ -229,7 +228,7 @@ One limitation of our study is the potential for unobserved variables that could
 
 ## Future Research Directions
 
-Future research should aim to disentangle these complex relationships further, perhaps through longitudinal studies or by incorporating more granular data on individual socioeconomic status. Understanding these dynamics is crucial for developing policies that support young people in their family planning decisions during and after economic downturns.
+Future research should aim to disentangle these complex relationships further, perhaps through longitudinal studies or by incorporating more detailed data on individual socioeconomic status. Understanding these dynamics is crucial for developing policies that support young people in their family planning decisions during and after economic downturns.
 
 \newpage
 
@@ -242,10 +241,10 @@ Future research should aim to disentangle these complex relationships further, p
 
 # Appendix {#sec-appendix}
 ## Data Manipulation and Cleaning
-Most of the data in our dataset are previously cleaned in the project we are replicating. Thus, figure 1 directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
+Most of the data in our dataset was previously cleaned for the project we are replicating. Thus, figure 1 directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary, as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
 
-In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@citedplyr] to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@citetidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@citetidyverse] in order to be graphed properly using `ggplot2`[@citeggplot].
+In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@citedplyr] to select the birth rates of the six age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@citetidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@citetidyverse] in order to be graphed properly using `ggplot2`[@citeggplot].
 
-In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from `mapdata` [@citemapdata]. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from `mapdata` [@citemapdata]. Then, a temporary data frame is created with tibble from `tidyverse`[@citetidyverse] with the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from `dpylr`[@citedplyr], which is then selected and renamed using `tidyverse`[@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven`[@citehaven].
+In figure 3, the first dataset was imported from `inputs/data/fig_3.csv` and the dataset containing American states information was from `mapdata` [@citemapdata]. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii, as these two states can't be properly shown in the dataset from `mapdata` [@citemapdata]. Then, a temporary data frame is created with tibble from `tidyverse`[@citetidyverse] with the abbreviated state names from `inputs/data/fig_3.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full name using left_join from `dpylr`[@citedplyr], which is then selected and renamed using `tidyverse`[@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven`[@citehaven].
 
-In all three figures, the library `here` [@citehere] were used to ensure file path is accessible in all directories.
+In all three figures, the library `here` [@citehere] was used to ensure that the file path should be accessible in all directories.
