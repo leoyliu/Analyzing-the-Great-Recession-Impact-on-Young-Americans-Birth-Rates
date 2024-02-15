@@ -92,7 +92,7 @@ rawdata |>
 
 ```{r}
 #| label: tbl-young-old-br
-#| tbl-cap: Birth rate of young and old age group from 1980 to 1989
+#| tbl-cap: Birth rate of young and old from 1980 to 1989
 #| echo: false
 
 cleaned_data <- read.csv(here::here("outputs/data/table_2.csv"))
@@ -173,7 +173,7 @@ Transitioning to age-specific trends, we direct our attention to the young women
 ## Birth Rate Comparison between Young and Old Population
 ```{r}
 #| label: fig-birth-rate-comparison-old-and-young
-#| fig-cap: Birth Rate Comparison between Young and Old Population
+#| fig-cap: Birth Rate between Young and Old Population
 #| echo: false
 
 figure4 <- read.csv(here::here("outputs/data/figure_4.csv"))
@@ -183,7 +183,7 @@ ggplot(figure4, aes(x = year, y = brate, color = age_group)) +
   geom_vline(xintercept = 2007, color = "black", linetype = "dashed") + 
   annotate("text", x = 2007, y = 60, label = "2007", 
            color = "black", angle = 90, vjust = -0.5) +
-  labs(title = "Birth Rate Comparison between Young and Old Population",
+  labs(title = "Birth Rate between Young and Old Population",
        x = "Year",
        y = "Birth Rate") +
   theme(panel.background = element_rect(fill = "white"),
