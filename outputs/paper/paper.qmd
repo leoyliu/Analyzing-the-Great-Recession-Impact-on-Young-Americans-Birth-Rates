@@ -7,7 +7,7 @@ thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-th
 date: today
 date-format: long
 abstract: "In this study, we explore the impact of the Great Recession on birth rates among young people in the United States, utilizing a comprehensive analysis of demographic and economic data. Our findings reveal a significant decline in birth rates within this group during and following the economic downturn, highlighting the intricate relationship between economic stability and reproductive decisions. This research contributes to our understanding of how macroeconomic factors can have profound effects on personal life choices, emphasizing the need for supportive policies targeting young individuals during economic crises."
-format: html
+format: pdf
 toc: true
 number-sections: true
 bibliography: references.bib
@@ -87,7 +87,7 @@ rawdata |>
 
 ```{r}
 #| label: tbl-young-old-br
-#| tbl-cap: Birth rate of young and old age group from 1980 to 1989
+#| tbl-cap: Birth rate of young and old from 1980 to 1989
 #| echo: false
 
 cleaned_data <- read.csv(here::here("outputs/data/table_2.csv"))
@@ -170,7 +170,7 @@ Transitioning to age-specific trends, we direct our attention to the young women
 ## Birth Rate Comparison between Young and Old Population
 ```{r}
 #| label: fig-birth-rate-comparison-old-and-young
-#| fig-cap: Birth Rate Comparison between Young and Old Population
+#| fig-cap: Birth Rate between Young and Old Population
 #| echo: false
 
 figure4 <- read.csv(here::here("outputs/data/figure_4.csv"))
@@ -180,7 +180,7 @@ ggplot(figure4, aes(x = year, y = brate, color = age_group)) +
   geom_vline(xintercept = 2007, color = "black", linetype = "dashed") + 
   annotate("text", x = 2007, y = 60, label = "2007", 
            color = "black", angle = 90, vjust = -0.5) +
-  labs(title = "Birth Rate Comparison between Young and Old Population",
+  labs(title = "Birth Rate between Young and Old Population",
        x = "Year",
        y = "Birth Rate") +
   theme(panel.background = element_rect(fill = "white"),
