@@ -80,7 +80,7 @@ rawdata |>
 
 ```{r}
 #| label: tbl-young-old-br
-#| tbl-cap: First Ten Rows of Birth Rates For Younger and Older Groups Spanning from 1980 to 2020
+#| tbl-cap: First Ten Rows of Birth Rates For Younger and Older Groups from 1980 to 2020
 #| echo: false
 
 cleaned_data <- read.csv(here::here("outputs/data/table_2.csv"))
@@ -123,8 +123,7 @@ ggplot(figure1,
         geom_vline(xintercept = 2007, color = "black", linetype = "dashed") +
         annotate("text", x = 2007, y = 60, label = "Global Financial Crisis of 2007-2008", 
                  color = "black", angle = 90, vjust = -0.5) +
-        labs(title = "Birth Rate in America overtime",
-            x = "Years",
+        labs(x = "Years",
             y = "Birth rate") +
         theme(panel.background = element_rect(fill = "white"),
               panel.grid.major = element_line(colour = "grey"),
@@ -146,8 +145,7 @@ ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
   geom_vline(xintercept = 2007, color = "black", linetype = "dashed") + 
   annotate("text", x = 2007, y = 60, label = "2007", 
            color = "black", angle = 90, vjust = -0.5) +
-  labs(title = "Birth Rate by Age Group Over Time",
-       x = "Year",
+  labs(x = "Year",
        y = "Birth Rate") +
   theme(panel.background = element_rect(fill = "white"),
               panel.grid.major = element_line(colour = "grey"),
@@ -156,10 +154,10 @@ ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
 ```
 Transitioning to age-specific trends, we direct our attention to the young women's demographic. @fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age group, showing distinct trends over time. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steady slow increase.
 
-## Birth Rate Comparison between Young and Old Population
+## Birth Rate Comparison between Younger and Older Population
 ```{r}
 #| label: fig-birth-rate-comparison-old-and-young
-#| fig-cap: Birth Rate between Young and Old Population
+#| fig-cap: Birth Rate between Younger and Older Population
 #| echo: false
 
 figure4 <- read.csv(here::here("outputs/data/figure_4.csv"))
@@ -169,8 +167,7 @@ ggplot(figure4, aes(x = year, y = brate, color = age_group)) +
   geom_vline(xintercept = 2007, color = "black", linetype = "dashed") + 
   annotate("text", x = 2007, y = 60, label = "2007", 
            color = "black", angle = 90, vjust = -0.5) +
-  labs(title = "Birth Rate between Young and Old Population",
-       x = "Year",
+  labs(x = "Year",
        y = "Birth Rate") +
   theme(panel.background = element_rect(fill = "white"),
         panel.grid.major = element_line(colour = "grey"),
@@ -190,8 +187,7 @@ figure3a <- read.csv(here::here("outputs/data/figure_3.csv"))
 ggplot(figure3a, aes(x = long, y = lat, group=group)) +
   geom_polygon(aes(fill = brate1544_thsnds_ch_pct)) +
   scale_fill_gradient(low = 'darkred', high = '#FFCCCB') +
-  labs(title = 'Change in Birth Rate by State Over Time',
-       fill = 'Change in Birth Rate') +
+  labs(fill = 'Change in Birth Rate') +
   theme_void()
 ```
 We then shift our focus to geographical variations in birth rates across states, presented in @fig-change-in-birth-rates-by-state. The graph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
