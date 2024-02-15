@@ -28,5 +28,5 @@ ggplot(figure3, aes(x = long, y = lat, group=group)) +
 
 # Save Plots
 ggsave(
-  "replication/plots/figure3.png"
+  "replications/plots/figure3.png"
 )
