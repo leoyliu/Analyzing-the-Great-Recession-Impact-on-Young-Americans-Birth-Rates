@@ -22,8 +22,8 @@ set.seed(853)
 # Initialize a tibble
 simulated_data <- tibble(
   year = c(1980:2020),
-    old = abs(rnorm(n = 41,mean = 80.5, sd=10.5)),
-  young = abs(rnorm(n = 41,mean = 25.5, sd=5.5))
+    young = abs(rnorm(n = 41,mean = 80.5, sd=10.5)),
+  old = abs(rnorm(n = 41,mean = 25.5, sd=5.5))
 )
 
 # View the simulated data
