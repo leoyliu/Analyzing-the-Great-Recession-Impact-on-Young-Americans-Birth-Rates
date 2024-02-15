@@ -60,9 +60,6 @@ uncleaned_data <- read.csv(here::here("inputs/data/fig_3.csv"))
 
 state <- map_data("state")
 
-## TODO?
-#data <- read_dta(here::here('data/nchs/nchs_births_pop_1990_2019.dta'))
-
 cleaned_data <- uncleaned_data [-c(1, 12), ]
 
 state_full <- tibble(
@@ -85,7 +82,7 @@ merged_data <- merge(state, cleaned_data, by.x = "region", by.y = "stname", all.
 # Write to CSV
 write_csv(
   x = merged_data,
-  file = "outputs/data/figure_3a.csv"
+  file = "outputs/data/figure_3.csv"
 )
 
 
