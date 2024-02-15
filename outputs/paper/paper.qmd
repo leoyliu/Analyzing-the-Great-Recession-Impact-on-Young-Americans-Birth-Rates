@@ -3,7 +3,7 @@ title: "Echoes of Economic Downturn: Investigating the Persistent Impact of the 
 author: 
   - Yuanyi (Leo) Liu
   - Qi Er (Emma) Teng
-thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-the-Great-Recession-Impact-on-Young-Americans-Birth-Rates. A replication of various aspects in this paper are available at: https://doi.org/10.48152/ssrp-srs6-t802"
+thanks: "Code and data are available at: https://github.com/leoyliu/Analyzing-the-Great-Recession-Impact-on-Young-Americans-Birth-Rates. A replication of various aspects in this paper are available at: https://doi.org/10.48152/ssrp-ddvc-b340."
 date: today
 date-format: long
 abstract: "In this study, we explore the impact of the Great Recession on birth rates among young people in the United States, utilizing a comprehensive analysis of demographic and economic data. Our findings reveal a significant decline in birth rates within this group during and following the economic downturn, highlighting the intricate relationship between economic stability and reproductive decisions. This research contributes to our understanding of how macroeconomic factors can have profound effects on personal life choices, emphasizing the need for supportive policies targeting young individuals during economic crises."
@@ -39,11 +39,9 @@ library(kableExtra)
 
 The Great Recession, a defining economic event of the early 21st century, has been subject to extensive analysis for its profound effects on employment, housing, and financial systems globally. However, its impact on demographic trends, particularly birth rates among young people in the United States, has not been thoroughly explored. This paper aims to fill this gap by examining how the economic downturn influenced reproductive decisions among this demographic.
 
-Utilizing a blend of quantitative data analysis and demographic research, we investigated birth rate trends among young adults during and following the recessionary period. Our methodology involved analyzing birth rate data in conjunction with economic indicators such as unemployment rates, income levels, and housing market trends to draw correlations and insights. // TODO
+Utilizing a blend of quantitative data analysis and demographic research, we investigated birth rate trends among young adults during and following the recessionary period. Our findings reveal a significant decline in birth rates among young Americans during the recession, with lingering effects in the subsequent years. This trend suggests that economic instability has a profound impact on personal life choices, including the decision to have children. The implications of these findings are far-reaching, affecting not only demographic forecasting but also social policy and economic recovery strategies.
 
-Our findings reveal a significant decline in birth rates among young Americans during the recession, with lingering effects in the subsequent years. This trend suggests that economic instability has a profound impact on personal life choices, including the decision to have children. The implications of these findings are far-reaching, affecting not only demographic forecasting but also social policy and economic recovery strategies.
-
-In this study, our primary estimand is the causal effect of the Great Recession on the birth rates among young people in the United States. Specifically, we aim to estimate the magnitude of change in birth rates attributable to the economic downturn, distinguishing this effect from other contemporaneous social and economic factors. This involves analyzing the differential impact of the recession on various age groups and across states, providing a nuanced understanding of how macroeconomic shocks can influence demographic trends.
+In this study, our primary estimand is the causal effect of the Great Recession on birth rates among young Americans, quantified by the change in birth rates attributable to the economic downturn, isolated from other socio-economic factors. This involves analyzing the differential impact of the recession on various age groups and across states, providing an understanding of how macroeconomic shocks can influence demographic trends.
 
 The paper is structured to facilitate a comprehensive understanding of the study and its implications. Following @sec-intro, @sec-data presents the data, detailing the data sources, analytical techniques, and the rationale behind the chosen methods. @sec-result discusses the results, elaborating on the observed trends and patterns in birth rate data. @sec-discussion provides an in-depth discussion of these findings, exploring potential factors influencing these trends, drawing connections to broader socio-economic issues, and providing suggestions for future research in this area.
 
@@ -51,21 +49,12 @@ The paper is structured to facilitate a comprehensive understanding of the study
 
 This section aims to offer an insightful understanding of the dataset utilized in our analysis. The dataset captures the birth rates across various demographics in the United States from 1980 to 2020. The data provide a broader context, allowing an analysis of trends over time and across different economic cycles, including the period of the Great Recession.
 
-## Source
-// TODO: Add explanation for source
+## Source and Methodology
+Data on birth rates for women aged 15-44 were sourced from National Vital Statistics Reports covering 2015, 2019, and 2020 [@cite2015birth; @cite2019birth; @cite2020birth], compiled from birth certificates across the US and the District of Columbia. @citeoriginal provided aggregated birth data for six cohorts over five-year spans, derived from NBER Natality Database [@citeNBER] and NCHS microdata [@citeNCHS] for 1980-2019. In this study, we simply used the replication data package provided by @citeoriginal for analysis.
 
-While there were alternative datasets available from other public and private sources, this dataset was chosen due to its comprehensive coverage, reliability, and the level of detail it offers. It includes data from the National Center for Health Statistics (NCHS) [TODO] and the U.S. Census Bureau [TODO], which are both reputable sources of demographic data.
+While there were alternative datasets available from other public and private sources, this dataset was chosen due to its comprehensive coverage, reliability, and the level of detail it offers. It includes data from the National Center for Health Statistics (NCHS) [@citeNCHS] and the U.S. Census Bureau [@citeUSCB], which are both reputable sources of demographic data.
 
-## Methodology
-// TODO
-
-The data was processed and cleaned using R[@citeR], a powerful statistical programming language. Moreover, most of the data in our dataset are previously cleaned in the project we are replicating. Thus, figure 1 directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
-
-In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@citedplyr] to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@citetidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@citetidyverse] in order to be graphed properly using `ggplot2`[@citeggplot].
-
-In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from `mapdata`. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from `mapdata`. Then, a temporary data frame is created with tibble from `tidyverse`[@citetidyverse] with the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from `dpylr`[@citedplyr], which is then selected and renamed using `tidyverse`[@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven`[@citehaven].
-
-In all three figures, the library `here` were used to ensure file path is accessible in all directories.
+The data was processed and cleaned using R[@citeR], a powerful statistical programming language. For key operations, please refer to the [@sec-appendix]. 
 
 ## Variables
 
@@ -73,7 +62,7 @@ To better understand the data, a summary table was developed to provide a detail
 
 ```{r}
 #| label: tbl-display-raw-data
-#| tbl-cap: Birth rate of all groups from 1980 to 1989
+#| tbl-cap: First Ten Rows of Birth Rates Spanning from 1980 to 2020
 #| echo: false
 
 rawdata <- read.csv(here::here("inputs/data/figs_2a_2b.csv"))
@@ -82,17 +71,16 @@ rawdata |>
   select(year,brate_1519,brate_2024,brate_2529,brate_3034,brate_3539,brate_4044) |>
   slice(1:10) |>
   kable(
-    caption = "Birth rate of all groups from 1980 to 1989",
     col.names = c("Year", "15 to 19", "20 to 24","25 to 29", "30 to 34", "35 to 39", "40 to 44"),
     digits = 1,
     booktabs = TRUE
   )
 ```
-@tbl-display-raw-data uses `kableExtra`[@citekableExtra] presents the birth rates for various age groups in the United States from the year 1980 to 1989. Moreover, the birth rates are expressed per every 1,000 women in the population.To further understand this table, Year represent the years from the selected year range. The next six columns are different age groups for women, which are 15 to 19 years, 20 to 24 years, 25 to 29 years, 30 to 34 years, 35 to 39 years, and 40 to 44 years. Moreover, we are also concerned with the birth rate of related states in America.
+@tbl-display-raw-data, created with `kableExtra` [@citekableExtra], showcases the first ten rows of U.S. birth rates by age group from 1980 to 2020, with rates per 1,000 women. To further understand this table, `Year` represents the specific years within this span. Following are six columns representing various age groups: 15-19, 20-24, 25-29, 30-34, 35-39, and 40-44 years. To examine the differences in birth rates between younger and older women, the data was aggregated into two age categories: `Younger` representing women aged 15-29, and `Older` for those aged 30-44. This aggregation facilitates a focused comparison across these distinct age groups.
 
 ```{r}
 #| label: tbl-young-old-br
-#| tbl-cap: Birth rate of young and old from 1980 to 1989
+#| tbl-cap: First Ten Rows of Birth Rates For Younger and Older Groups Spanning from 1980 to 2020
 #| echo: false
 
 cleaned_data <- read.csv(here::here("outputs/data/table_2.csv"))
@@ -101,27 +89,26 @@ cleaned_data |>
   select(year, young, old) |>
   slice(1:10) |>
   kable(
-    caption = "Birth rate of young and old age group from 1980 to 1989",
-    col.names = c("Year", "Young", "Old"),
+    col.names = c("Year", "Younger", "Older"),
     digits = 1,
     booktabs = TRUE
   )
 ```
-@tbl-young-old-br uses `kableExtra`[@citekableExtra] presents the birth rates for the older and younger population from the year 1980 to 1989. This is a more concise table that represents the estimand we are trying to explore. Similarily to @tbl-display-raw-data, the birth rates are expressed by the mean birth rate of the selected age population. Moreover, the Year represent the years from the selected year range.
+@tbl-young-old-br, built with `kableExtra`[@citekableExtra], displays the first ten rows of birth rates for younger and older demographics from 1980 to 2020. This is a more concise table that represents the estimand we are trying to explore. Similar to @tbl-display-raw-data, it averages birth rates within selected age groups per year, providing a streamlined view for analysis.
 
 ## Measurements
 
-The measurement of birth rates in our study involves a detailed analysis of the annual number of live births per 1,000 women in various age groups, ranging from 15 to 44 years. These rates were extracted from comprehensive datasets provided by the National Center for Health Statistics (NCHS) and the U.S. Census Bureau, ensuring accuracy and reliability in capturing demographic trends across the United States from 1980 to 2020.
+The measurement of birth rates in our study involves a detailed analysis of the annual number of live births per 1,000 women in various age groups, ranging from 15 to 44 years. These rates were extracted from datasets provided by the National Center for Health Statistics (NCHS) [@citeNCHS], ensuring accuracy and reliability in capturing demographic trends across the United States from 1980 to 2020.
 
 For each age group, birth rates were calculated by dividing the total number of live births by the population of women in that age range, then multiplying by 1,000 to standardize the measure. This approach allows for comparison across different demographics and time periods, providing a clear picture of how birth rates have shifted, particularly in response to economic conditions such as the Great Recession.
 
-In addition to age-specific birth rates, state-level data were also analyzed to identify geographic variations in birth rate trends. This involved mapping birth rates against state populations, taking into consideration the exclusion of data from states like Alaska and Hawaii where mapping constraints exist.
+In addition to age-specific birth rates, state-level data were also analyzed to identify geographic variations in birth rate trends. This involved mapping birth rates against state populations, taking into consideration the exclusion of data from states like Alaska and Hawaii where mapping constraints exist. Further details on this aspect of our study are discussed in @sec-result.
 
 \newpage
 
 # Results {#sec-result}
 
-@sec-result presents the core findings from our comprehensive analysis of US birth rates, specifically focusing on the changes observed over time, across different age groups of young women, and by state.
+@sec-result presents the core findings from our analysis of US birth rates, specifically focusing on the changes observed over time, across different age groups of young women, and by state.
 
 ## Overall Trend in US Birth Rates
 ```{r}
@@ -145,7 +132,7 @@ ggplot(figure1,
               plot.title = element_text(color = "black", size = 14, face = "bold"),
               axis.title = element_text(color = "black"))
 ```
-First, we examine the overall trend, showcasing a substantial decline following the Great Recession. @fig-trends-in-birth-rate, reflecting the trend in birth rates in America over time, captures a significant decline in birth rates commencing around the onset of the Great Recession in 2007-2008. According to Kearney et al. (2022), the economic stress associated with the Great Recession contributed to a marked downturn in birth rates, with a 7.2 percent drop from 68.1 to 63.2 births per 1,000 women observed between 2008 and 2011. This visual representation is particularly striking as it indicates a sharp and sustained decrease in birth rates coinciding with and following the Great Recession, without a subsequent recovery to pre-recession levels.
+First, we examine the overall trend, showcasing a substantial decline following the Great Recession. @fig-trends-in-birth-rate, reflecting the trend in birth rates in America over time, captures a significant decline in birth rates commencing around the onset of the Great Recession in 2007-2008. According to @citeoriginal, the economic stress associated with the Great Recession contributed to a marked downturn in birth rates, with a 7.2 percent drop from 68.1 to 63.2 births per 1,000 women observed between 2008 and 2011. This visual representation is particularly striking as it indicates a sharp and sustained decrease in birth rates coinciding with and following the Great Recession, without a subsequent recovery to pre-recession levels.
 
 ## Trends in Birth Rates by Age Group
 ```{r}
@@ -168,7 +155,7 @@ ggplot(figure2, aes(x = year, y = brate, color = age_group)) +
               plot.title = element_text(color = "black", size = 14, face = "bold"),
               axis.title = element_text(color = "black"))
 ```
-Transitioning to age-specific trends, we direct our attention to the young women's demographic. @fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age bracket, showing distinct trends over time. The age groups range from 15-19 up to 40-44 years old. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steady slow increase.
+Transitioning to age-specific trends, we direct our attention to the young women's demographic. @fig-trends-in-birth-rate-in-young-people displays the birth rates segmented by age groups in the US from 1980 to 2020. Each line represents a different age group, showing distinct trends over time. It is evident that the younger age groups experienced a decline in birth rates after 2007, the year marked as the beginning of the Great Recession. Notably, the youngest age group, 15-19, had a significant decrease from rates that were once the highest among the groups. In contrast, the 40-44 age group maintained the lowest birth rates throughout and saw a steady slow increase.
 
 ## Birth Rate Comparison between Young and Old Population
 ```{r}
@@ -191,7 +178,7 @@ ggplot(figure4, aes(x = year, y = brate, color = age_group)) +
         plot.title = element_text(color = "black", size = 14, face = "bold"),
         axis.title = element_text(color = "black"))
 ```
-To further visualize this birth rate change between age groups, we will categorize population between age 15 to 29 as young and the population between age 30 to 44 as old. The average birth rate of each group is calculated and displayed according to the corresponding year. The younger age group is represented by blue line and the older age group is represented by red line. It is evident from the graph that the younger age group is higher than that for the old population across the entire time span. However, it is also evident that there is a significant birth rate decrease in the young population after 2007, while older population maintains a slowly increasing trend. Moreover, it can be seen that the difference in birth rate between the two age groups is slowly decreasing, and from the current trend, this change in birth rate seems to be continuously dropping.
+To further visualize this birth rate change between age groups, we will categorize population between age 15 to 29 as young and the population between age 30 to 44 as old. The average birth rate of each group is calculated and displayed according to the corresponding year. The younger age group is represented by blue line and the older age group is represented by red line. It is evident from the @fig-birth-rate-comparison-old-and-young that the younger age group is higher than that for the old population across the entire time span. However, it is also evident that there is a significant birth rate decrease in the young population after 2007, while older population maintains a slowly increasing trend. Moreover, it can be seen that the difference in birth rate between the two age groups is slowly decreasing, and from the current trend, this change in birth rate seems to be continuously dropping.
 
 ## Change in Birth Rates by State
 ```{r}
@@ -199,7 +186,7 @@ To further visualize this birth rate change between age groups, we will categori
 #| fig-cap: Change in Birth Rates by State, 2004–2008 to 2015–2019
 #| echo: false
 
-figure3a <- read.csv(here::here("outputs/data/figure_3a.csv"))
+figure3a <- read.csv(here::here("outputs/data/figure_3.csv"))
 
 ggplot(figure3a, aes(x = long, y = lat, group=group)) +
   geom_polygon(aes(fill = brate1544_thsnds_ch_pct)) +
@@ -216,11 +203,11 @@ In summary, our results encapsulate a comprehensive view of the declining birth 
 
 # Discussion {#sec-discussion}
 
-The findings of this study offer a layered perspective on the decline in birth rates among young people in the United States, particularly in the context of the Great Recession. Our analysis provides a nuanced understanding of the multifaceted influences on demographic trends.
+The findings of this study offer a layered perspective on the decline in birth rates among young people in the United States, particularly in the context of the Great Recession. Our analysis provides an understanding of the multifaceted influences on demographic trends.
 
 ## Findings
 
-In our replication of Kearney et al. (2022), we reaffirmed the central finding that the Great Recession has had a lasting impact on birth rates among young people in the United States. Our analysis of Figures 1 and 2a showed a pronounced decline in birth rates across all age groups, with the steepest decrease observed among those aged 15-29. This trend extended beyond the economic recovery, suggesting that the Great Recession may have fundamentally altered the family planning trajectory of a generation.
+In our replication of @citeoriginal, we reaffirmed the central finding that the Great Recession has had a lasting impact on birth rates among young people in the United States. Our analysis of Figures 1 and 2 showed a pronounced decline in birth rates across all age groups, with the steepest decrease observed among those aged 15-29. This trend extended beyond the economic recovery, suggesting that the Great Recession may have fundamentally altered the family planning trajectory of a generation.
 
 ## Economic Impact Insights
 
@@ -252,3 +239,13 @@ Future research should aim to disentangle these complex relationships further, p
 :::
 
 {{< pagebreak >}}
+
+# Appendix {#sec-appendix}
+## Data Manipulation and Cleaning
+Most of the data in our dataset are previously cleaned in the project we are replicating. Thus, figure 1 directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
+
+In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@citedplyr] to select the birth rate of the 6 age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@citetidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@citetidyverse] in order to be graphed properly using `ggplot2`[@citeggplot].
+
+In figure 3, the first dataset was imported from `inputs/data/fig_3a.csv` and the dataset containing American states information was from `mapdata` [@citemapdata]. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii as these two states can't be properly showned in the dataset from `mapdata` [@citemapdata]. Then, a temporary data frame is created with tibble from `tidyverse`[@citetidyverse] with the abbreviated state names from `inputs/data/fig_3a.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full names using left_join from `dpylr`[@citedplyr], which is then selected and renamed using `tidyverse`[@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven`[@citehaven].
+
+In all three figures, the library `here` [@citehere] were used to ensure file path is accessible in all directories.
