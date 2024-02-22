@@ -174,7 +174,7 @@ ggplot(figure4, aes(x = year, y = brate, color = age_group)) +
         plot.title = element_text(color = "black", size = 14, face = "bold"),
         axis.title = element_text(color = "black"))
 ```
-To further visualize this birth rate change between age groups, we will categorize population between age 15 to 29 as young and the population between age 30 to 44 as old. The average birth rate of each group is calculated and displayed according to the corresponding year. The younger age group is represented by blue line and the older age group is represented by red line. It is evident from the @fig-birth-rate-comparison-old-and-young that the younger age group is higher than that for the old population across the entire time span. However, it is also evident that there is a significant birth rate decrease in the young population after 2007, while older population maintains a slowly increasing trend. Moreover, it can be seen that the difference in birth rate between the two age groups is slowly decreasing, and from the current trend, this change in birth rate seems to be continuously dropping.
+To further visualize this birth rate change between age groups, we will categorize population between age 15 to 29 as young and the population between age 30 to 44 as old. The average birth rate of each group is calculated and displayed according to the corresponding year. The younger age group is represented by blue line and the older age group is represented by red line. It is evident from @fig-birth-rate-comparison-old-and-young that the younger age group is higher than that for the old population across the entire time span. However, it is also evident that there is a significant birth rate decrease in the young population after 2007, while older population maintains a slowly increasing trend. Moreover, it can be seen that the difference in birth rate between the two age groups is slowly decreasing, and from the current trend, this change in birth rate seems to be continuously dropping.
 
 ## Change in Birth Rates by State
 ```{r}
@@ -190,7 +190,7 @@ ggplot(figure3a, aes(x = long, y = lat, group=group)) +
   labs(fill = 'Change in Birth Rate') +
   theme_void()
 ```
-We then shift our focus to geographical variations in birth rates across states, presented in @fig-change-in-birth-rates-by-state. The graph portrays the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
+We then shift our focus to geographical variations in birth rates across states [@fig-change-in-birth-rates-by-state]. The illustrates the change in birth rates by state across the United States over the period from 2004–2008 to 2015–2019, avoiding the immediate effects of the Great Recession by focusing on the periods before and after its main impact. The map's color gradient, which darkens with more significant decreases in birth rates, shows substantial variation across states. While the decline is widespread, some states, notably in the South, West, and in certain Southwestern and Mountain states, exhibit more significant decreases.
 
 In conclusion, our findings provide a complete perspective of dropping birth rates in the United States, demonstrating both temporal and demographic tendencies. The upcoming @sec-discussion will look at the various variables and biases that may be driving these trends.
 
@@ -224,21 +224,26 @@ One limitation of our study is the potential for unobserved variables that could
 
 Future research should aim to disentangle these complex relationships further, perhaps through longitudinal studies or by incorporating more detailed data on individual socioeconomic status. Understanding these dynamics is crucial for developing policies that support young people in their family planning decisions during and after economic downturns.
 
+
 \newpage
 
-# References
+\appendix
 
-::: {#refs}
-:::
+# Appendix {-}
 
-{{< pagebreak >}}
+# Data Manipulation and Cleaning {#sec-appendix}
 
-# Appendix {#sec-appendix}
-## Data Manipulation and Cleaning
-Most of the data in our dataset was previously cleaned for the project we are replicating. Thus, figure 1 directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary, as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
+Most of the data in our dataset was previously cleaned for the project we are replicating. Thus, @fig-trends-in-birth-rate directly used data from `outputs/data/fig_1.csv` without any further cleaning necessary, as it simply displays the birth rate from 1980 to 2020. Thus, the cleaned data is directly stored to `outputs/data/fig_1.csv` from `inputs/data/fig_1.csv`.
 
-In figure 2, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr`[@citedplyr] to select the birth rates of the six age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse`[@citetidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse`[@citetidyverse] in order to be graphed properly using `ggplot2`[@citeggplot].
+In @fig-trends-in-birth-rate-in-young-people, the dataset was imported from `inputs/data/fig_2.csv` and used `dpylr` [@citedplyr] to select the birth rates of the six age groups (from 15 to 44). Furthermore, the selected data was renamed using `tidyverse` [@citetidyverse] and changed into names that represent the content of the data better. Moreover, these data is then pivoted using `tidyverse` [@citetidyverse] in order to be graphed properly using `ggplot2` [@citeggplot].
 
-In figure 3, the first dataset was imported from `inputs/data/fig_3.csv` and the dataset containing American states information was from `mapdata` [@citemapdata]. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii, as these two states can't be properly shown in the dataset from `mapdata` [@citemapdata]. Then, a temporary data frame is created with tibble from `tidyverse`[@citetidyverse] with the abbreviated state names from `inputs/data/fig_3.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full name using left_join from `dpylr`[@citedplyr], which is then selected and renamed using `tidyverse`[@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven`[@citehaven].
+In @fig-birth-rate-comparison-old-and-young, the first dataset was imported from `inputs/data/fig_3.csv` and the dataset containing American states information was from `mapdata` [@citemapdata]. The first dataset was first sliced to remove birth rate information regarding the states of Alaska and Hawaii, as these two states can't be properly shown in the dataset from `mapdata` [@citemapdata]. Then, a temporary data frame is created with tibble from `tidyverse` [@citetidyverse] with the abbreviated state names from `inputs/data/fig_3.csv` and the state full names. Moreover, the abbreviated state name in the first dataset is switched with the state full name using left_join from `dpylr` [@citedplyr], which is then selected and renamed using `tidyverse` [@citetidyverse]. After this, the adjusted dataset with the state full names and birth rate is merged with the second dataset that contains the American states information for further graphing with `haven` [@citehaven].
 
 In all three figures, the library `here` [@citehere] was used to ensure that the file path should be accessible in all directories.
+
+
+
+\newpage
+
+
+# References
